@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		350D09622B110DDC0025D0FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D09612B110DDC0025D0FE /* AppDelegate.swift */; };
 		350D09642B110DDC0025D0FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D09632B110DDC0025D0FE /* SceneDelegate.swift */; };
-		350D09662B110DDC0025D0FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D09652B110DDC0025D0FE /* ViewController.swift */; };
+		350D09662B110DDC0025D0FE /* ChessBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D09652B110DDC0025D0FE /* ChessBoardVC.swift */; };
 		350D09692B110DDC0025D0FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 350D09672B110DDC0025D0FE /* Main.storyboard */; };
 		350D096C2B110DDC0025D0FE /* Chess.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 350D096A2B110DDC0025D0FE /* Chess.xcdatamodeld */; };
 		350D096E2B110DDE0025D0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350D096D2B110DDE0025D0FE /* Assets.xcassets */; };
@@ -17,6 +17,7 @@
 		350D097C2B110DDE0025D0FE /* ChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D097B2B110DDE0025D0FE /* ChessTests.swift */; };
 		350D09862B110DDE0025D0FE /* ChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D09852B110DDE0025D0FE /* ChessUITests.swift */; };
 		350D09882B110DDE0025D0FE /* ChessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D09872B110DDE0025D0FE /* ChessUITestsLaunchTests.swift */; };
+		350D09982B1244530025D0FE /* ChessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D09972B1244530025D0FE /* ChessCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,7 @@
 		350D095E2B110DDC0025D0FE /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		350D09612B110DDC0025D0FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		350D09632B110DDC0025D0FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		350D09652B110DDC0025D0FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		350D09652B110DDC0025D0FE /* ChessBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardVC.swift; sourceTree = "<group>"; };
 		350D09682B110DDC0025D0FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		350D096B2B110DDC0025D0FE /* Chess.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chess.xcdatamodel; sourceTree = "<group>"; };
 		350D096D2B110DDE0025D0FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		350D09812B110DDE0025D0FE /* ChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		350D09852B110DDE0025D0FE /* ChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITests.swift; sourceTree = "<group>"; };
 		350D09872B110DDE0025D0FE /* ChessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		350D09972B1244530025D0FE /* ChessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +103,11 @@
 		350D09602B110DDC0025D0FE /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				350D09962B1242AE0025D0FE /* Controller */,
+				350D09952B1242A00025D0FE /* View */,
+				350D09942B1242930025D0FE /* Model */,
 				350D09612B110DDC0025D0FE /* AppDelegate.swift */,
 				350D09632B110DDC0025D0FE /* SceneDelegate.swift */,
-				350D09652B110DDC0025D0FE /* ViewController.swift */,
 				350D09672B110DDC0025D0FE /* Main.storyboard */,
 				350D096D2B110DDE0025D0FE /* Assets.xcassets */,
 				350D096F2B110DDE0025D0FE /* LaunchScreen.storyboard */,
@@ -128,6 +132,29 @@
 				350D09872B110DDE0025D0FE /* ChessUITestsLaunchTests.swift */,
 			);
 			path = ChessUITests;
+			sourceTree = "<group>";
+		};
+		350D09942B1242930025D0FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		350D09952B1242A00025D0FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				350D09972B1244530025D0FE /* ChessCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		350D09962B1242AE0025D0FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				350D09652B110DDC0025D0FE /* ChessBoardVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +289,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				350D096C2B110DDC0025D0FE /* Chess.xcdatamodeld in Sources */,
-				350D09662B110DDC0025D0FE /* ViewController.swift in Sources */,
+				350D09662B110DDC0025D0FE /* ChessBoardVC.swift in Sources */,
 				350D09622B110DDC0025D0FE /* AppDelegate.swift in Sources */,
 				350D09642B110DDC0025D0FE /* SceneDelegate.swift in Sources */,
+				350D09982B1244530025D0FE /* ChessCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

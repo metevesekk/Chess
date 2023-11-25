@@ -62,7 +62,3 @@ extension ChessBoardVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
     // Diğer delegate metotları...
 }
-
-
-
-

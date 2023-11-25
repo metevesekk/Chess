@@ -9,6 +9,8 @@ import UIKit
 
 class ChessBoardVC: UIViewController {
     var collectionView: UICollectionView!
+    var leadingTrailingSize: CGFloat = 45
+    var topAnchorOffset : CGFloat = 200
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,13 +19,17 @@ class ChessBoardVC: UIViewController {
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.bounds.width / 8, height: view.bounds.width / 8)
+        layout.itemSize = CGSize(width: (view.bounds.width - leadingTrailingSize) / 8, height: (view.bounds.width - leadingTrailingSize) / 8)
         layout.minimumInteritemSpacing = 0 // CGFloat türünde olmalıdır
         layout.minimumLineSpacing = 0 // CGFloat türünde olmalıdır
         layout.sectionInset = UIEdgeInsets.zero // Bölüm içi boşlukları kaldır
+        
 
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.register(ChessCell.self, forCellWithReuseIdentifier: "ChessCell")
+        collectionView.layer.borderColor = UIColor.systemYellow.cgColor
+        collectionView.layer.borderWidth = 5
+        let borderSize = collectionView.layer.borderWidth
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
@@ -33,10 +39,10 @@ class ChessBoardVC: UIViewController {
         
         // AutoLayout kısıtlamalarını etkinleştir
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: topAnchorOffset),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingTrailingSize / 2),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -leadingTrailingSize / 2),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -((view.bounds.height) - (view.bounds.width - leadingTrailingSize)) + topAnchorOffset + borderSize)
         ])
     }
 
@@ -56,6 +62,7 @@ extension ChessBoardVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
     // Diğer delegate metotları...
 }
+
 
 
 

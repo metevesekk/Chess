@@ -10,7 +10,7 @@ import RealmSwift
 
 class LoginVC: UIViewController {
 
-    var createNoteButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

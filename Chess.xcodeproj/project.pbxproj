@@ -20,10 +20,20 @@
 		35D1C9902B73DF960029E2A5 /* ChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1C98F2B73DF960029E2A5 /* ChessUITests.swift */; };
 		35D1C9922B73DF960029E2A5 /* ChessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1C9912B73DF960029E2A5 /* ChessUITestsLaunchTests.swift */; };
 		35DF6BF42B7514F200AE1312 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BF32B7514F200AE1312 /* CustomButton.swift */; };
-		35DF6BF62B75172B00AE1312 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BF52B75172B00AE1312 /* CustomCollectionViewCell.swift */; };
+		35DF6BF62B75172B00AE1312 /* ChessBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BF52B75172B00AE1312 /* ChessBoardCell.swift */; };
 		35DF6BFA2B7517A800AE1312 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BF92B7517A800AE1312 /* UIView+Extensions.swift */; };
 		35DF6BFD2B7517EE00AE1312 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BFC2B7517EE00AE1312 /* LayoutHelper.swift */; };
 		35DF6BFF2B75184200AE1312 /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BFE2B75184200AE1312 /* ProfileCard.swift */; };
+		35DF6C012B752B7500AE1312 /* ColorFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C002B752B7500AE1312 /* ColorFont+Extension.swift */; };
+		35DF6C032B7535BF00AE1312 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C022B7535BF00AE1312 /* ThemeManager.swift */; };
+		35DF6C052B7536D100AE1312 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C042B7536D100AE1312 /* MenuVC.swift */; };
+		35DF6C072B75374D00AE1312 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C062B75374D00AE1312 /* Move.swift */; };
+		35DF6C092B75375C00AE1312 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C082B75375C00AE1312 /* Piece.swift */; };
+		35DF6C0B2B75376600AE1312 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C0A2B75376600AE1312 /* Player.swift */; };
+		35DF6C0D2B75378E00AE1312 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C0C2B75378E00AE1312 /* Game.swift */; };
+		35DF6C0F2B75379A00AE1312 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C0E2B75379A00AE1312 /* History.swift */; };
+		35DF6C112B7537BA00AE1312 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C102B7537BA00AE1312 /* Stats.swift */; };
+		35DF6C132B753FE000AE1312 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C122B753FE000AE1312 /* Board.swift */; };
 		CCC94AB930DC5D40796F3817 /* Pods_Chess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D3646D2837233C5AD61F74 /* Pods_Chess.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,10 +73,20 @@
 		35D1C98F2B73DF960029E2A5 /* ChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITests.swift; sourceTree = "<group>"; };
 		35D1C9912B73DF960029E2A5 /* ChessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		35DF6BF32B7514F200AE1312 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		35DF6BF52B75172B00AE1312 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		35DF6BF52B75172B00AE1312 /* ChessBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardCell.swift; sourceTree = "<group>"; };
 		35DF6BF92B7517A800AE1312 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		35DF6BFC2B7517EE00AE1312 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		35DF6BFE2B75184200AE1312 /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
+		35DF6C002B752B7500AE1312 /* ColorFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorFont+Extension.swift"; sourceTree = "<group>"; };
+		35DF6C022B7535BF00AE1312 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		35DF6C042B7536D100AE1312 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		35DF6C062B75374D00AE1312 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		35DF6C082B75375C00AE1312 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		35DF6C0A2B75376600AE1312 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		35DF6C0C2B75378E00AE1312 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		35DF6C0E2B75379A00AE1312 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		35DF6C102B7537BA00AE1312 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		35DF6C122B753FE000AE1312 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		47EE62D30F4C3C62A2ED32A3 /* Pods-Chess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess.debug.xcconfig"; path = "Target Support Files/Pods-Chess/Pods-Chess.debug.xcconfig"; sourceTree = "<group>"; };
 		9A558EE2DADBD1390D47A22F /* Pods-Chess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess.release.xcconfig"; path = "Target Support Files/Pods-Chess/Pods-Chess.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +120,13 @@
 		355AFE862B73E3A100E8F48A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				35DF6C062B75374D00AE1312 /* Move.swift */,
+				35DF6C122B753FE000AE1312 /* Board.swift */,
+				35DF6C082B75375C00AE1312 /* Piece.swift */,
+				35DF6C0A2B75376600AE1312 /* Player.swift */,
+				35DF6C0C2B75378E00AE1312 /* Game.swift */,
+				35DF6C0E2B75379A00AE1312 /* History.swift */,
+				35DF6C102B7537BA00AE1312 /* Stats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +148,7 @@
 				355AFE892B73EAB400E8F48A /* GameScreenVC.swift */,
 				355AFE8B2B73EAC800E8F48A /* SettingsVC.swift */,
 				355AFE8D2B73EAFB00E8F48A /* CreateGameVC.swift */,
+				35DF6C042B7536D100AE1312 /* MenuVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,7 +211,7 @@
 		35DF6BF72B75173D00AE1312 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				35DF6BF52B75172B00AE1312 /* CustomCollectionViewCell.swift */,
+				35DF6BF52B75172B00AE1312 /* ChessBoardCell.swift */,
 				35DF6BF32B7514F200AE1312 /* CustomButton.swift */,
 				35DF6BFE2B75184200AE1312 /* ProfileCard.swift */,
 			);
@@ -194,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				35DF6BF92B7517A800AE1312 /* UIView+Extensions.swift */,
+				35DF6C002B752B7500AE1312 /* ColorFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -202,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				35DF6BFC2B7517EE00AE1312 /* LayoutHelper.swift */,
+				35DF6C022B7535BF00AE1312 /* ThemeManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -399,16 +429,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				355AFE8A2B73EAB400E8F48A /* GameScreenVC.swift in Sources */,
+				35DF6C112B7537BA00AE1312 /* Stats.swift in Sources */,
+				35DF6C0D2B75378E00AE1312 /* Game.swift in Sources */,
+				35DF6C0F2B75379A00AE1312 /* History.swift in Sources */,
 				35DF6BFD2B7517EE00AE1312 /* LayoutHelper.swift in Sources */,
 				35D1C9732B73DF950029E2A5 /* LoginVC.swift in Sources */,
+				35DF6C052B7536D100AE1312 /* MenuVC.swift in Sources */,
 				355AFE8E2B73EAFB00E8F48A /* CreateGameVC.swift in Sources */,
 				35DF6BFA2B7517A800AE1312 /* UIView+Extensions.swift in Sources */,
-				35DF6BF62B75172B00AE1312 /* CustomCollectionViewCell.swift in Sources */,
+				35DF6BF62B75172B00AE1312 /* ChessBoardCell.swift in Sources */,
+				35DF6C032B7535BF00AE1312 /* ThemeManager.swift in Sources */,
+				35DF6C132B753FE000AE1312 /* Board.swift in Sources */,
 				35D1C96F2B73DF950029E2A5 /* AppDelegate.swift in Sources */,
 				35DF6BF42B7514F200AE1312 /* CustomButton.swift in Sources */,
+				35DF6C072B75374D00AE1312 /* Move.swift in Sources */,
 				35DF6BFF2B75184200AE1312 /* ProfileCard.swift in Sources */,
+				35DF6C092B75375C00AE1312 /* Piece.swift in Sources */,
 				35D1C9712B73DF950029E2A5 /* SceneDelegate.swift in Sources */,
 				355AFE8C2B73EAC800E8F48A /* SettingsVC.swift in Sources */,
+				35DF6C0B2B75376600AE1312 /* Player.swift in Sources */,
+				35DF6C012B752B7500AE1312 /* ColorFont+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

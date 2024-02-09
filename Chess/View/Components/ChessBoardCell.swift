@@ -23,10 +23,10 @@ class ChessBoardCell: UICollectionViewCell {
 
     func configureCell(at indexPath: IndexPath) {
         if (indexPath.row / 8 + indexPath.row % 8) % 2 == 0 {
-            self.backgroundColor = #colorLiteral(red: 0.9702178836, green: 0.8668905497, blue: 0.7201874852, alpha: 1)
+            self.backgroundColor = ThemeManager.colorCode("F7DDB8", alpha: 1)
             
         } else {
-            self.backgroundColor = #colorLiteral(red: 0.1664624214, green: 0.27115798, blue: 0.4278879166, alpha: 1)
+            self.backgroundColor = ThemeManager.colorCode("2A456D", alpha: 1)
         }
     }
 }

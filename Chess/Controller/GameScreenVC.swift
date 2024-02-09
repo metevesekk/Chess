@@ -18,8 +18,8 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-      //  setupButton()
-        view.backgroundColor = #colorLiteral(red: 0.9594381452, green: 0.9594381452, blue: 0.9594381452, alpha: 1)
+        setupButton()
+        view.backgroundColor = ThemeManager.colorCode("fdf8ec", alpha: 1)
     }
 
     func setupCollectionView(){

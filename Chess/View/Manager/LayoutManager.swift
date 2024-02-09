@@ -1,5 +1,5 @@
 //
-//  LayoutHelper.swift
+//  LayoutManager.swift
 //  Chess
 //
 //  Created by Mete Vesek on 8.02.2024.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct LayoutHelper{
+struct LayoutManager{
     
     static func anchor(childView: UIView,  parentView: UIView, top: NSLayoutYAxisAnchor? = nil, paddingTop: CGFloat = 0,
                        leading: NSLayoutXAxisAnchor? = nil, paddingLeading: CGFloat = 0,

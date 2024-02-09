@@ -22,7 +22,7 @@
 		35DF6BF42B7514F200AE1312 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BF32B7514F200AE1312 /* CustomButton.swift */; };
 		35DF6BF62B75172B00AE1312 /* ChessBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BF52B75172B00AE1312 /* ChessBoardCell.swift */; };
 		35DF6BFA2B7517A800AE1312 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BF92B7517A800AE1312 /* UIView+Extensions.swift */; };
-		35DF6BFD2B7517EE00AE1312 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BFC2B7517EE00AE1312 /* LayoutHelper.swift */; };
+		35DF6BFD2B7517EE00AE1312 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BFC2B7517EE00AE1312 /* LayoutManager.swift */; };
 		35DF6BFF2B75184200AE1312 /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6BFE2B75184200AE1312 /* ProfileCard.swift */; };
 		35DF6C012B752B7500AE1312 /* ColorFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C002B752B7500AE1312 /* ColorFont+Extension.swift */; };
 		35DF6C032B7535BF00AE1312 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C022B7535BF00AE1312 /* ThemeManager.swift */; };
@@ -75,7 +75,7 @@
 		35DF6BF32B7514F200AE1312 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		35DF6BF52B75172B00AE1312 /* ChessBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardCell.swift; sourceTree = "<group>"; };
 		35DF6BF92B7517A800AE1312 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		35DF6BFC2B7517EE00AE1312 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
+		35DF6BFC2B7517EE00AE1312 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		35DF6BFE2B75184200AE1312 /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		35DF6C002B752B7500AE1312 /* ColorFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorFont+Extension.swift"; sourceTree = "<group>"; };
 		35DF6C022B7535BF00AE1312 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				35DF6BF72B75173D00AE1312 /* Components */,
-				35DF6BFB2B7517DA00AE1312 /* Helper */,
+				35DF6BFB2B7517DA00AE1312 /* Manager */,
 				35DF6BF82B75174A00AE1312 /* Extensions */,
 			);
 			path = View;
@@ -227,13 +227,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		35DF6BFB2B7517DA00AE1312 /* Helper */ = {
+		35DF6BFB2B7517DA00AE1312 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				35DF6BFC2B7517EE00AE1312 /* LayoutHelper.swift */,
+				35DF6BFC2B7517EE00AE1312 /* LayoutManager.swift */,
 				35DF6C022B7535BF00AE1312 /* ThemeManager.swift */,
 			);
-			path = Helper;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		45B36FAA5D839E99E571774A /* Pods */ = {
@@ -432,7 +432,7 @@
 				35DF6C112B7537BA00AE1312 /* Stats.swift in Sources */,
 				35DF6C0D2B75378E00AE1312 /* Game.swift in Sources */,
 				35DF6C0F2B75379A00AE1312 /* History.swift in Sources */,
-				35DF6BFD2B7517EE00AE1312 /* LayoutHelper.swift in Sources */,
+				35DF6BFD2B7517EE00AE1312 /* LayoutManager.swift in Sources */,
 				35D1C9732B73DF950029E2A5 /* LoginVC.swift in Sources */,
 				35DF6C052B7536D100AE1312 /* MenuVC.swift in Sources */,
 				355AFE8E2B73EAFB00E8F48A /* CreateGameVC.swift in Sources */,

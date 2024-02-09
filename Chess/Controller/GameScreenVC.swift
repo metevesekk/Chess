@@ -13,15 +13,16 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var collectionView: UICollectionView!
     var paddingSize: CGFloat = 50
     var offsetSize: CGFloat = -50
+    var button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-
+      //  setupButton()
         view.backgroundColor = #colorLiteral(red: 0.9594381452, green: 0.9594381452, blue: 0.9594381452, alpha: 1)
     }
 
-    private func setupCollectionView() {
+    func setupCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: (view.bounds.width - paddingSize) / 8, height: (view.bounds.width - paddingSize) / 8)
         layout.minimumInteritemSpacing = 0
@@ -33,8 +34,14 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        LayoutHelper.anchor(childView: collectionView, parentView: view, width: view.bounds.width - paddingSize, heigth: view.bounds.width - paddingSize, centerX: view.centerXAnchor, centerY: view.centerYAnchor, paddingCenterY: offsetSize)
+        LayoutManager.anchor(childView: collectionView, parentView: view, width: view.bounds.width - paddingSize, heigth: view.bounds.width - paddingSize, centerX: view.centerXAnchor, centerY: view.centerYAnchor, paddingCenterY: offsetSize)
     }
+    
+    func setupButton(){
+        CustomButton.setupButton(button, backgroundColor: ThemeManager.colorCode("e46290", alpha: 1) , tintColor: .white, textColor: .white, fontSize: 20, fontName: "TimesNewRomanPS-BoldMT", title: "Hello", cornerRadius: 5, bordorColor: CGColor(srgbRed: 0.5, green: 0.6, blue: 0.7, alpha: 1) , borderWidth: 5)
+        LayoutManager.anchor(childView: button, parentView: view, width: 70 , heigth: 40, centerX: view.centerXAnchor, centerY: view.centerYAnchor)
+    }
+    
 
 }
 

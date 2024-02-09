@@ -8,13 +8,21 @@
 import UIKit
 
 class CustomButton: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    static func setupButton(_ button: UIButton, backgroundColor: UIColor, tintColor: UIColor, textColor: UIColor, fontSize: CGFloat, fontName: String, title: String, cornerRadius: CGFloat, bordorColor: CGColor? = nil, borderWidth: CGFloat? = nil){
+        button.isEnabled = true
+        button.isHidden = false
+        button.backgroundColor = backgroundColor
+        button.tintColor = tintColor
+        button.titleLabel?.font = UIFont(name: fontName, size: fontSize)
+        button.titleLabel?.textColor = textColor
+        button.setTitle(title, for: .normal)
+        button.layer.cornerRadius = cornerRadius
+        if let bordorColor = bordorColor{
+            button.layer.borderColor = bordorColor
+        }
+        if let borderWidth = borderWidth{
+            button.layer.borderWidth = borderWidth
+        }
     }
-    */
-
 }

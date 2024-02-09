@@ -9,14 +9,21 @@ import UIKit
 
 class CustomLabel: UIView {
 
-    static func setupLabel(_ label: UILabel, backgroundColor: UIColor? = nil, tintColor: UIColor, textColor: UIColor, fontSize: CGFloat, fontName: String, text: String, cornerRadius: CGFloat, bordorColor: CGColor? = nil, borderWidth: CGFloat? = nil){
+    static func setupLabel(_ label: UILabel, backgroundColor: UIColor? = nil, tintColor: UIColor, textColor: UIColor, fontSize: CGFloat, fontName: String, text: String? = nil, cornerRadius: CGFloat? = nil, bordorColor: CGColor? = nil, borderWidth: CGFloat? = nil){
         label.isEnabled = true
         label.isHidden = false
         label.tintColor = tintColor
-        label.font = UIFont(name: fontName, size: fontSize)
+        label.font = UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
         label.text = text
         label.textColor = textColor
-        label.layer.cornerRadius = cornerRadius
+        
+        if let text = text{
+            label.text = text
+        }
+        
+        if let cornerRadius = cornerRadius{
+            label.layer.cornerRadius = cornerRadius
+        }
         
         if let backgroundColor = backgroundColor{
             label.backgroundColor = backgroundColor

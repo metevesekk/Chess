@@ -14,12 +14,19 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var paddingSize: CGFloat = 50
     var offsetSize: CGFloat = -50
     var button = UIButton()
+    var label = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
-        setupButton()
         view.backgroundColor = ThemeManager.colorCode("fdf8ec", alpha: 1)
+        setupFunctions()
+    }
+    
+    func setupFunctions(){
+        setupCollectionView()
+   //   setupButton()
+   //   setupLabel()
+        setupGestureRecognizer()
     }
 
     func setupCollectionView(){
@@ -42,6 +49,27 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         LayoutManager.anchor(childView: button, parentView: view, width: 70 , heigth: 40, centerX: view.centerXAnchor, centerY: view.centerYAnchor)
     }
     
+    func setupLabel(){
+        CustomLabel.setupLabel(label, tintColor: .black, textColor: ThemeManager.colorCode("a46290", alpha: 1), fontSize: 15, fontName: "TimesNewRoman", text: "Burası da Label", cornerRadius: 7)
+        LayoutManager.anchor(childView: label, parentView: view, centerX: view.centerXAnchor, centerY: view.centerYAnchor, paddingCenterY: 40)
+    }
+    
+    func setupGestureRecognizer(){
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func handleTap(gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: collectionView)
+        
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            print("Dokunulan hücrenin indexPath'i: \(indexPath)")
+        } else {
+            print("CollectionView dışında bir yere dokunuldu.")
+        }
+    }
+
+    
 
 }
 
@@ -55,4 +83,5 @@ extension GameScreenVC{
         cell.configureCell(at: indexPath)
         return cell
     }
+
 }

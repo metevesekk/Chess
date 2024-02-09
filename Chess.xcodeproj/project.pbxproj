@@ -215,8 +215,8 @@
 			children = (
 				35DF6BF52B75172B00AE1312 /* ChessBoardCell.swift */,
 				35DF6BF32B7514F200AE1312 /* CustomButton.swift */,
-				35DF6BFE2B75184200AE1312 /* ProfileCard.swift */,
 				353E0CF72B76233300522E12 /* CustomLabel.swift */,
+				35DF6BFE2B75184200AE1312 /* ProfileCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

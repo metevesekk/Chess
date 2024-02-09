@@ -18,9 +18,11 @@ class CustomButton: UIView {
         button.titleLabel?.textColor = textColor
         button.setTitle(title, for: .normal)
         button.layer.cornerRadius = cornerRadius
+        
         if let bordorColor = bordorColor{
             button.layer.borderColor = bordorColor
         }
+        
         if let borderWidth = borderWidth{
             button.layer.borderWidth = borderWidth
         }

@@ -53,8 +53,8 @@ class ChessBoardCell: UICollectionViewCell {
     
     func configureCell(at indexPath: IndexPath) {
         let isEvenCell = (indexPath.row / 8 + indexPath.row % 8) % 2 == 0
-        self.backgroundColor = isEvenCell ? ThemeManager.colorCode("F7DDB8", alpha: 1) : ThemeManager.colorCode("2A456D", alpha: 1)
-        let textColor = isEvenCell ? ThemeManager.colorCode("2A456D", alpha: 1) : ThemeManager.colorCode("F7DDB8", alpha: 1)
+        self.backgroundColor = isEvenCell ? UIColor.fromHex("F7DDB8") :  UIColor.fromHex("2A456D")
+        let textColor = isEvenCell ? UIColor.fromHex("2A456D") :  UIColor.fromHex("F7DDB8")
         
         if indexPath.row >= 56 {
             let letterIndex = indexPath.row % 8

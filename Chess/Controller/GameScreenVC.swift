@@ -18,7 +18,7 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = ThemeManager.colorCode("fdf8ec", alpha: 1)
+        view.backgroundColor = UIColor.fromHex("fdf8ec")
         setupFunctions()
     }
     
@@ -45,12 +45,12 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func setupButton(){
-        CustomButton.setupButton(button, backgroundColor: ThemeManager.colorCode("e46290", alpha: 1) , tintColor: .white, textColor: .white, fontSize: 20, fontName: "TimesNewRomanPS-BoldMT", title: "Hello", cornerRadius: 5, bordorColor: CGColor(srgbRed: 0.5, green: 0.6, blue: 0.7, alpha: 1) , borderWidth: 5)
+        CustomButton.setupButton(button, backgroundColor: UIColor.fromHex("e46290") , tintColor: .white, textColor: .white, fontSize: 20, fontName: "TimesNewRomanPS-BoldMT", title: "Hello", cornerRadius: 5, bordorColor: CGColor(srgbRed: 0.5, green: 0.6, blue: 0.7, alpha: 1) , borderWidth: 5)
         LayoutManager.anchor(childView: button, parentView: view, width: 70 , heigth: 40, centerX: view.centerXAnchor, centerY: view.centerYAnchor)
     }
     
     func setupLabel(){
-        CustomLabel.setupLabel(label, tintColor: .black, textColor: ThemeManager.colorCode("a46290", alpha: 1), fontSize: 15, fontName: "TimesNewRoman", text: "Burası da Label", cornerRadius: 7)
+        CustomLabel.setupLabel(label, tintColor: .black, textColor: UIColor.fromHex("a46290"), fontSize: 15, fontName: "TimesNewRoman", text: "Burası da Label", cornerRadius: 7)
         LayoutManager.anchor(childView: label, parentView: view, centerX: view.centerXAnchor, centerY: view.centerYAnchor, paddingCenterY: 40)
     }
     

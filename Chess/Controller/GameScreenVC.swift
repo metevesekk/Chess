@@ -15,6 +15,7 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var offsetSize: CGFloat = -50
     var button = UIButton()
     var label = UILabel()
+    var pieces: [Piece?] = Array(repeating: nil, count: 64)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +64,10 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         let location = gesture.location(in: collectionView)
         
         if let indexPath = collectionView.indexPathForItem(at: location) {
+            let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell
             print("Dokunulan hücrenin indexPath'i: \(indexPath)")
+            let isCellEmpty = cell?.pieceImage.image == nil
+            print(isCellEmpty ? "Hücre Boş" : "Hücrede bir taş var")
         } else {
             print("CollectionView dışında bir yere dokunuldu.")
         }
@@ -75,7 +79,7 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
 
 extension GameScreenVC{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 64
+        return pieces.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

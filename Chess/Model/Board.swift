@@ -9,5 +9,7 @@ import Foundation
 import RealmSwift
 
 class Board {
-    var pieces : [[Piece]]?
+  
+    var piece = Piece()
+    var pieces = [Piece]()
 }

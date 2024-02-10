@@ -33,7 +33,6 @@
 		35DF6C0B2B75376600AE1312 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C0A2B75376600AE1312 /* Player.swift */; };
 		35DF6C0D2B75378E00AE1312 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C0C2B75378E00AE1312 /* Game.swift */; };
 		35DF6C0F2B75379A00AE1312 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C0E2B75379A00AE1312 /* History.swift */; };
-		35DF6C112B7537BA00AE1312 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C102B7537BA00AE1312 /* Stats.swift */; };
 		35DF6C132B753FE000AE1312 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF6C122B753FE000AE1312 /* Board.swift */; };
 		CCC94AB930DC5D40796F3817 /* Pods_Chess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D3646D2837233C5AD61F74 /* Pods_Chess.framework */; };
 /* End PBXBuildFile section */
@@ -87,7 +86,6 @@
 		35DF6C0A2B75376600AE1312 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		35DF6C0C2B75378E00AE1312 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		35DF6C0E2B75379A00AE1312 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		35DF6C102B7537BA00AE1312 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		35DF6C122B753FE000AE1312 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		47EE62D30F4C3C62A2ED32A3 /* Pods-Chess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess.debug.xcconfig"; path = "Target Support Files/Pods-Chess/Pods-Chess.debug.xcconfig"; sourceTree = "<group>"; };
 		9A558EE2DADBD1390D47A22F /* Pods-Chess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess.release.xcconfig"; path = "Target Support Files/Pods-Chess/Pods-Chess.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				35DF6C0A2B75376600AE1312 /* Player.swift */,
 				35DF6C0C2B75378E00AE1312 /* Game.swift */,
 				35DF6C0E2B75379A00AE1312 /* History.swift */,
-				35DF6C102B7537BA00AE1312 /* Stats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,7 +429,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				355AFE8A2B73EAB400E8F48A /* GameScreenVC.swift in Sources */,
-				35DF6C112B7537BA00AE1312 /* Stats.swift in Sources */,
 				35DF6C0D2B75378E00AE1312 /* Game.swift in Sources */,
 				35DF6C0F2B75379A00AE1312 /* History.swift in Sources */,
 				35DF6BFD2B7517EE00AE1312 /* LayoutManager.swift in Sources */,

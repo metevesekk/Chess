@@ -13,6 +13,7 @@ class ChessBoardCell: UICollectionViewCell {
     let numberLabel = UILabel()
     let letters = ["a", "b", "c" ,"d", "e", "f", "g", "h"]
     let numbers = ["8", "7", "6", "5", "4", "3", "2", "1"]
+    var piece : Piece?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,17 +45,17 @@ class ChessBoardCell: UICollectionViewCell {
     }
     
     private func setupImageView(){
-        LayoutManager.anchor(childView: pieceImage, parentView: self, 
-                             top: topAnchor, paddingTop: 5,
-                             leading: leadingAnchor, paddingLeading: 5,
-                             bottom: bottomAnchor, paddingBottom: -5,
-                             trailing: trailingAnchor, paddingTrailing: -5)
+            LayoutManager.anchor(childView: pieceImage, parentView: self,
+                                 top: topAnchor, paddingTop: 5,
+                                 leading: leadingAnchor, paddingLeading: 5,
+                                 bottom: bottomAnchor, paddingBottom: -5,
+                                 trailing: trailingAnchor, paddingTrailing: -5)
     }
     
     func configureCell(at indexPath: IndexPath) {
         let isEvenCell = (indexPath.row / 8 + indexPath.row % 8) % 2 == 0
-        self.backgroundColor = isEvenCell ? UIColor.fromHex("F7DDB8") :  UIColor.fromHex("2A456D")
-        let textColor = isEvenCell ? UIColor.fromHex("2A456D") :  UIColor.fromHex("F7DDB8")
+        self.backgroundColor = isEvenCell ? UIColor.fromHex("F7DDB8") :  UIColor.fromHex("4679c3")
+        let textColor = isEvenCell ? UIColor.fromHex("4679c3") :  UIColor.fromHex("F7DDB8")
         
         if indexPath.row >= 56 {
             let letterIndex = indexPath.row % 8
@@ -66,6 +67,7 @@ class ChessBoardCell: UICollectionViewCell {
             let numberIndex = indexPath.row / 8
             numberLabel.text = numbers[numberIndex]
             numberLabel.textColor = textColor
+            pieceImage.image = UIImage(named: "crown")
         }
     }
 }

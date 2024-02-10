@@ -7,3 +7,8 @@
 
 import Foundation
 import RealmSwift
+
+struct Player{
+    var nickname : String
+    var history : History
+}

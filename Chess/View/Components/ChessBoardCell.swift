@@ -13,7 +13,7 @@ class ChessBoardCell: UICollectionViewCell {
     let numberLabel = UILabel()
     let letters = ["a", "b", "c" ,"d", "e", "f", "g", "h"]
     let numbers = ["8", "7", "6", "5", "4", "3", "2", "1"]
-    var piece : Piece?
+  //  var piece : Piece?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,7 +33,7 @@ class ChessBoardCell: UICollectionViewCell {
     private func setupLetterLabel(){
         CustomLabel.setupLabel(letterLabel, tintColor: .clear, textColor: .black, fontSize: self.bounds.width/4, fontName: "Avenir-Medium")
         LayoutManager.anchor(childView: letterLabel, parentView: self,
-                             bottom: bottomAnchor, paddingBottom: 0,
+                             bottom: bottomAnchor, paddingBottom: 3,
                              trailing: trailingAnchor, paddingTrailing: -2)
     }
     

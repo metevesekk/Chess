@@ -12,7 +12,7 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     var collectionView: UICollectionView!
     var paddingSize: CGFloat = 50
-    var offsetSize: CGFloat = -50
+    var offsetSize: CGFloat = -60
     var button = UIButton()
     var label = UILabel()
     var board : Board!
@@ -29,29 +29,22 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         board = Board()
     }
 
-    func setupCollectionView(){
+    func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (view.bounds.width - paddingSize) / 8, height: (view.bounds.width - paddingSize) / 8)
+        let boardSize = view.bounds.width * 0.9
+        layout.itemSize = CGSize(width: boardSize / 8, height: boardSize / 8)
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0 
-        layout.sectionInset = UIEdgeInsets.zero
+        layout.minimumLineSpacing = 0
 
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        let xOffset = (view.bounds.width - boardSize) / 2
+        let yOffset = (view.bounds.height - boardSize) / 2 + offsetSize
+        collectionView = UICollectionView(frame: CGRect(x: xOffset, y: yOffset, width: boardSize, height: boardSize), collectionViewLayout: layout)
+        
         collectionView.register(ChessBoardCell.self, forCellWithReuseIdentifier: "ChessBoardCell")
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        LayoutManager.anchor(childView: collectionView, parentView: view, width: view.bounds.width - paddingSize, heigth: view.bounds.width - paddingSize, centerX: view.centerXAnchor, centerY: view.centerYAnchor, paddingCenterY: offsetSize)
-    }
-    
-    func setupButton(){
-        CustomButton.setupButton(button, backgroundColor: UIColor.fromHex("e46290") , tintColor: .white, textColor: .white, fontSize: 20, fontName: "TimesNewRomanPS-BoldMT", title: "Hello", cornerRadius: 5, bordorColor: CGColor(srgbRed: 0.5, green: 0.6, blue: 0.7, alpha: 1) , borderWidth: 5)
-        LayoutManager.anchor(childView: button, parentView: view, width: 70 , heigth: 40, centerX: view.centerXAnchor, centerY: view.centerYAnchor)
-    }
-    
-    func setupLabel(){
-        CustomLabel.setupLabel(label, tintColor: .black, textColor: UIColor.fromHex("a46290"), fontSize: 15, fontName: "TimesNewRoman", text: "Burası da Label", cornerRadius: 7)
-        LayoutManager.anchor(childView: label, parentView: view, centerX: view.centerXAnchor, centerY: view.centerYAnchor, paddingCenterY: 40)
+
+        view.addSubview(collectionView)
     }
     
     func setupGestureRecognizer(){

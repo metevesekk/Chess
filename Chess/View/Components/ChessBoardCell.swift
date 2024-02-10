@@ -31,14 +31,14 @@ class ChessBoardCell: UICollectionViewCell {
     }
 
     private func setupLetterLabel(){
-        CustomLabel.setupLabel(letterLabel, tintColor: .clear, textColor: .black, fontSize: 14, fontName: "Avenir-Medium")
+        CustomLabel.setupLabel(letterLabel, tintColor: .clear, textColor: .black, fontSize: self.bounds.width/4, fontName: "Avenir-Medium")
         LayoutManager.anchor(childView: letterLabel, parentView: self,
                              bottom: bottomAnchor, paddingBottom: 0,
                              trailing: trailingAnchor, paddingTrailing: -2)
     }
     
     private func setupNumberLabel(){
-        CustomLabel.setupLabel(numberLabel, tintColor: .clear, textColor: .black, fontSize: 13, fontName: "Avenir-Medium")
+        CustomLabel.setupLabel(numberLabel, tintColor: .clear, textColor: .black, fontSize: self.bounds.width/4, fontName: "Avenir-Medium")
         LayoutManager.anchor(childView: numberLabel, parentView: self,
                              top: topAnchor, paddingTop: 2,
                              leading: leadingAnchor, paddingLeading: 2)
@@ -46,10 +46,10 @@ class ChessBoardCell: UICollectionViewCell {
     
     private func setupImageView(){
             LayoutManager.anchor(childView: pieceImage, parentView: self,
-                                 top: topAnchor, paddingTop: 7,
-                                 leading: leadingAnchor, paddingLeading: 7,
-                                 bottom: bottomAnchor, paddingBottom: -7,
-                                 trailing: trailingAnchor, paddingTrailing: -7)
+                                 top: topAnchor, paddingTop: self.bounds.width/7,
+                                 leading: leadingAnchor, paddingLeading: self.bounds.width/7,
+                                 bottom: bottomAnchor, paddingBottom: -self.bounds.width/7,
+                                 trailing: trailingAnchor, paddingTrailing: -self.bounds.width/7)
     }
     
     func configureCell(at indexPath: IndexPath) {

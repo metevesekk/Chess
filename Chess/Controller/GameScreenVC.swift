@@ -15,7 +15,7 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var offsetSize: CGFloat = -50
     var button = UIButton()
     var label = UILabel()
-    var pieces: [Piece?] = Array(repeating: nil, count: 64)
+    var board : Board!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +25,8 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func setupFunctions(){
         setupCollectionView()
-   //   setupButton()
-   //   setupLabel()
         setupGestureRecognizer()
+        board = Board()
     }
 
     func setupCollectionView(){
@@ -79,12 +78,14 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
 
 extension GameScreenVC{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pieces.count
+        return 64
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChessBoardCell", for: indexPath) as! ChessBoardCell
         cell.configureCell(at: indexPath)
+        let piece = board.pieces[indexPath.row]
+        cell.configurePiece(with: piece)
         return cell
     }
 

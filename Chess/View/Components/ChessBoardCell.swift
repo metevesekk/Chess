@@ -46,10 +46,10 @@ class ChessBoardCell: UICollectionViewCell {
     
     private func setupImageView(){
             LayoutManager.anchor(childView: pieceImage, parentView: self,
-                                 top: topAnchor, paddingTop: 5,
-                                 leading: leadingAnchor, paddingLeading: 5,
-                                 bottom: bottomAnchor, paddingBottom: -5,
-                                 trailing: trailingAnchor, paddingTrailing: -5)
+                                 top: topAnchor, paddingTop: 7,
+                                 leading: leadingAnchor, paddingLeading: 7,
+                                 bottom: bottomAnchor, paddingBottom: -7,
+                                 trailing: trailingAnchor, paddingTrailing: -7)
     }
     
     func configureCell(at indexPath: IndexPath) {
@@ -67,7 +67,15 @@ class ChessBoardCell: UICollectionViewCell {
             let numberIndex = indexPath.row / 8
             numberLabel.text = numbers[numberIndex]
             numberLabel.textColor = textColor
-            pieceImage.image = UIImage(named: "crown")
+        }
+    }
+    
+    func configurePiece(with piece: Piece?){
+        if let piece = piece{
+            let imageName = "\(piece.type)-\(piece.color)"
+            pieceImage.image = UIImage(named: imageName)
+        } else {
+            pieceImage.image = nil
         }
     }
 }

@@ -9,9 +9,6 @@ import Foundation
 import RealmSwift
 
 class Game{
+
     
-    func possibleMoves(pieceType: Piece.PieceType) -> [Move]{
-        
-        return []
-    }
 }

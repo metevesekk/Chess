@@ -8,45 +8,49 @@
 import Foundation
 import RealmSwift
 
-class Piece : ChessBoardCell{
-    let pieceColor : String? = nil
-    let pieceIndex : IndexPath? = nil
-    let isAlive = Bool()
+class Piece{
+    let color : PieceColor
+    let type : PieceType
+    let isAlive : Bool
     
-    enum PieceType{
-        case pawn
-        case king
-        case queen
-        case bishop
-        case rook
-    }
-    
-    enum PieceColor{
-        case black
-        case white
-    }
-    
-    func getType(pieceType: PieceType) -> String{
-        switch pieceType{
+    var getType : String {
+        var typeString = String()
+        switch type{
         case .pawn:
-            return "pawn"
+            typeString = "pawn"
         case .bishop:
-            return "bishop"
+            typeString = "bishop"
         case .rook:
-            return "rook"
+            typeString = "rook"
         case .queen:
-            return "queen"
+            typeString = "queen"
         case .king:
-            return "king"
+            typeString = "king"
+        case .knight:
+            typeString = "knight"
         }
+        return typeString
     }
     
-    func getColor(pieceColor: PieceColor) -> String{
-        switch pieceColor{
+    var getColor : String {
+        var colorString = String()
+        switch color{
         case .black:
-            return "black"
+            colorString = "black"
         case .white:
-            return "white"
+            colorString = "white"
         }
+        return colorString
     }
+    
+    init(color: PieceColor, type: PieceType) {
+        self.color = color
+        self.type = type
+        self.isAlive = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }

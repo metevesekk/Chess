@@ -9,13 +9,7 @@ import Foundation
 import RealmSwift
 
 class Move : GameScreenVC{
-    var move : IndexPath?
-    var gameScreen : GameScreenVC?
 
-    func getIndexPath(board: Board, gesture: UITapGestureRecognizer) -> IndexPath?{
-        var index : IndexPath?
-        
-        return index
-        }
+    
     
 }

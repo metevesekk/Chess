@@ -9,7 +9,15 @@ import Foundation
 import RealmSwift
 
 class Board {
-  
-    var piece = Piece()
-    var pieces = [Piece]()
+    
+    var pieces : [Piece?]
+    
+    init() {
+        pieces = Array(repeating: nil, count: 64)
+        
+        for index in 8..<16 {
+            pieces[index] = Piece(color: .white, type: .pawn)
+        }
+    }
+    
 }

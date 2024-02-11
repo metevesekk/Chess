@@ -25,7 +25,8 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func setupFunctions(){
         setupCollectionView()
-        setupGestureRecognizer()
+        setupTapGestureRecognizer()
+  //      setupPanGestureRecognizer()
         setupBoard()
     }
 
@@ -51,10 +52,14 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         board = Board()
     }
     
-    func setupGestureRecognizer(){
+    func setupTapGestureRecognizer(){
         let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         collectionView.addGestureRecognizer(gesture)
     }
+    
+/*    func setupPanGestureRecognizer(){
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+    } */
     
     @objc func handleTap(gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: collectionView)
@@ -68,6 +73,24 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             print("CollectionView dışında bir yere dokunuldu.")
         }
     }
+    
+/*    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: translation),
+        let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
+        
+        switch gesture.state {
+        case .began:
+            guard cell.pieceImage.image != nil else { return }
+        case .changed:
+            guard let selectedPiece = board.pieces[indexPath.row] else { return }
+            selectedPiece.
+        }
+        
+        
+    } */
+    
+    
 
     
 

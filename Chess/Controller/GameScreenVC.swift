@@ -26,7 +26,7 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func setupFunctions(){
         setupCollectionView()
         setupGestureRecognizer()
-        board = Board()
+        setupBoard()
     }
 
     func setupCollectionView() {
@@ -45,6 +45,10 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         collectionView.delegate = self
 
         view.addSubview(collectionView)
+    }
+    
+    func setupBoard(){
+        board = Board()
     }
     
     func setupGestureRecognizer(){

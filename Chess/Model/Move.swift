@@ -33,12 +33,25 @@ class Move : Board{
         return bool
     }
     
-    func possibleMoves(with piece: Piece, from oldIndex: Coordinate) -> Set<Coordinate> {
-        let possibleIndexes = Set<Coordinate>()
-     /*   switch piece.type{
-        case .bishop:
-            return possibleIndexes
-        } */
+    func possibleMoves(with piece: Piece, from currentCoords: Coordinate) -> Set<Coordinate> {
+        var possibleIndexes = Set<Coordinate>()
+        var coords = currentCoords
+        if piece.color == .white{
+            switch piece.type{
+            case .pawn:
+                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+            case .queen:
+                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+            case .king:
+                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+            case .bishop:
+                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+            case .knight:
+                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+            case .rook:
+                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+            }
+        }
         
         return possibleIndexes
     }
@@ -48,13 +61,13 @@ class Move : Board{
         var coord = Coordinate(column: 0, row: 8)
         
         if index <= 8 {
-            for i in 0...index{
+            for _ in 0...index{
                 coord.row += 1
             }
         } else{
-            for i in 0...index / 8{
+            for _ in 0...index / 8{
                 coord.column -= 1
-                for j in 0...8{
+                for _ in 0...8{
                     coord.row += 1
                 }
             }
@@ -64,8 +77,8 @@ class Move : Board{
     }
     
     func getIndex(coord: Coordinate) -> Int{
-        var x = coord.column
-        var y = coord.row
+        let x = coord.column
+        let y = coord.row
         return 8 * y + x
     }
         

@@ -19,10 +19,10 @@ class Board {
     
     private func setupPawns() {
         for index in 8..<16 {
-            pieces[index] = Piece(type: .pawn, color: .black, index: IndexPath(index: index), isAlive: true)
+            pieces[index] = Piece(type: .pawn, color: .black, isAlive: true)
         }
         for index in 48..<56 {
-            pieces[index] = Piece(type: .pawn, color: .white, index: IndexPath(index: index), isAlive: true)
+            pieces[index] = Piece(type: .pawn, color: .white, isAlive: true)
         }
     }
     
@@ -30,8 +30,8 @@ class Board {
         let backRowTypes: [PieceType] = [.rook, .knight, .bishop, .king, .queen, .bishop, .knight, .rook]
         
         for (index, type) in backRowTypes.enumerated() {
-            pieces[index] = Piece(type: type, color: .black, index: IndexPath(index: index), isAlive: true)
-            pieces[56 + index] = Piece(type: type, color: .white, index: IndexPath(index: index), isAlive: true)
+            pieces[index] = Piece(type: type, color: .black, isAlive: true)
+            pieces[56 + index] = Piece(type: type, color: .white, isAlive: true)
         }
     }
     

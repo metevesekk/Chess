@@ -7,7 +7,17 @@
 
 import Foundation
 
-struct Coordinate : Hashable {
+struct Coordinate : Equatable, Hashable {
     var column: Int
     var row: Int
+    
+    static func ==(lhs:Coordinate, rhs:Coordinate) -> Bool {
+        var bool = Bool()
+        if lhs.row == rhs.row && lhs.column == rhs.column {
+            bool = true
+        } else {
+            bool = false
+        }
+        return bool
+    }
 }

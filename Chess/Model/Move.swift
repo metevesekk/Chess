@@ -10,17 +10,17 @@ import RealmSwift
 
 class Move : Board{
 
-    func movePiece(from oldIndex: Int, to newIndex: Int) {
-        guard let pieceToMove = pieces[oldIndex] else { return }
-        guard oldIndex != newIndex, oldIndex >= 0, oldIndex < pieces.count,
-              newIndex >= 0, newIndex < pieces.count,
-              pieces[newIndex] == nil, canMove(with: pieceToMove, from: oldIndex, to: newIndex) == true else { return }
+    func movePiece(from oldIndex: Coordinate, to newIndex: Coordinate) {
+        guard let pieceToMove = pieces[getIndex(coord: oldIndex)] else { return }
+        guard getCoord(index: getIndex(coord: newIndex)) != getCoord(index: getIndex(coord: newIndex)), getIndex(coord: oldIndex) >= 0, getIndex(coord: oldIndex) < pieces.count,
+              getIndex(coord: newIndex) >= 0, getIndex(coord: newIndex) < pieces.count,
+              pieces[getIndex(coord: newIndex)] == nil, canMove(with: pieceToMove, from: oldIndex, to: newIndex) == true else { return }
           
-          pieces[newIndex] = pieceToMove
-          pieces[oldIndex] = nil
+          pieces[getIndex(coord: newIndex)] = pieceToMove
+          pieces[getIndex(coord: oldIndex)] = nil
       }
     
-    func canMove(with piece: Piece, from oldIndex: Int, to newIndex: Int) -> Bool{
+    func canMove(with piece: Piece, from oldIndex: Coordinate, to newIndex: Coordinate) -> Bool{
         var bool = Bool()
         let possibleMoves = possibleMoves(with: piece, from: oldIndex)
         
@@ -33,10 +33,12 @@ class Move : Board{
         return bool
     }
     
-    func possibleMoves(with piece: Piece, from oldIndex: Int) -> Set<Int> {
-        let possibleIndexes = Set<Int>()
-        var index = Int()
-        
+    func possibleMoves(with piece: Piece, from oldIndex: Coordinate) -> Set<Coordinate> {
+        let possibleIndexes = Set<Coordinate>()
+     /*   switch piece.type{
+        case .bishop:
+            return possibleIndexes
+        } */
         
         return possibleIndexes
     }
@@ -59,6 +61,12 @@ class Move : Board{
         }
 
         return coord
+    }
+    
+    func getIndex(coord: Coordinate) -> Int{
+        var x = coord.column
+        var y = coord.row
+        return 8 * y + x
     }
         
 }

@@ -11,13 +11,13 @@ import RealmSwift
 class Move : Board{
 
     func movePiece(from oldIndex: Coordinate, to newIndex: Coordinate) {
-        guard let pieceToMove = pieces[getIndex(coord: oldIndex)] else { return }
-        guard getCoord(index: getIndex(coord: newIndex)) != getCoord(index: getIndex(coord: newIndex)), getIndex(coord: oldIndex) >= 0, getIndex(coord: oldIndex) < pieces.count,
-              getIndex(coord: newIndex) >= 0, getIndex(coord: newIndex) < pieces.count,
-              pieces[getIndex(coord: newIndex)] == nil, canMove(with: pieceToMove, from: oldIndex, to: newIndex) == true else { return }
+        guard let pieceToMove = pieces[Move.getIndex(coord: oldIndex)] else { return }
+        guard getCoord(index: Move.getIndex(coord: newIndex)) != getCoord(index: Move.getIndex(coord: newIndex)), Move.getIndex(coord: oldIndex) >= 0, Move.getIndex(coord: oldIndex) < pieces.count,
+              Move.getIndex(coord: newIndex) >= 0, Move.getIndex(coord: newIndex) < pieces.count,
+              pieces[Move.getIndex(coord: newIndex)] == nil, canMove(with: pieceToMove, from: oldIndex, to: newIndex) == true else { return }
           
-          pieces[getIndex(coord: newIndex)] = pieceToMove
-          pieces[getIndex(coord: oldIndex)] = nil
+        pieces[Move.getIndex(coord: newIndex)] = pieceToMove
+        pieces[Move.getIndex(coord: oldIndex)] = nil
       }
     
     func canMove(with piece: Piece, from oldIndex: Coordinate, to newIndex: Coordinate) -> Bool{
@@ -35,21 +35,21 @@ class Move : Board{
     
     func possibleMoves(with piece: Piece, from currentCoords: Coordinate) -> Set<Coordinate> {
         var possibleIndexes = Set<Coordinate>()
-        var coords = currentCoords
+        let coords = currentCoords
         if piece.color == .white{
             switch piece.type{
             case .pawn:
-                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
             case .queen:
-                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
             case .king:
-                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
             case .bishop:
-                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
             case .knight:
-                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
             case .rook:
-                possibleIndexes.insert(Coordinate(column: currentCoords.column , row: currentCoords.row - 1))
+                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
             }
         }
         
@@ -76,7 +76,7 @@ class Move : Board{
         return coord
     }
     
-    func getIndex(coord: Coordinate) -> Int{
+    static func getIndex(coord: Coordinate) -> Int{
         let x = coord.column
         let y = coord.row
         return 8 * y + x

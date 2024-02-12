@@ -16,7 +16,10 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var button = UIButton()
     var label = UILabel()
     var board : Board!
-
+    var draggingIndexPath: IndexPath?
+    var draggingView: UIView?
+    var initialCenter: CGPoint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.fromHex("fdf8ec")
@@ -25,18 +28,17 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func setupFunctions(){
         setupCollectionView()
-        setupTapGestureRecognizer()
-  //      setupPanGestureRecognizer()
         setupBoard()
+        setupPanGestureRecognizer()
     }
-
+    
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let boardSize = view.bounds.width * 0.9
         layout.itemSize = CGSize(width: boardSize / 8, height: boardSize / 8)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-
+        
         let xOffset = (view.bounds.width - boardSize) / 2
         let yOffset = (view.bounds.height - boardSize) / 2 + offsetSize
         collectionView = UICollectionView(frame: CGRect(x: xOffset, y: yOffset, width: boardSize, height: boardSize), collectionViewLayout: layout)
@@ -44,7 +46,7 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         collectionView.register(ChessBoardCell.self, forCellWithReuseIdentifier: "ChessBoardCell")
         collectionView.dataSource = self
         collectionView.delegate = self
-
+        
         view.addSubview(collectionView)
     }
     
@@ -52,49 +54,58 @@ class GameScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         board = Board()
     }
     
-    func setupTapGestureRecognizer(){
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        collectionView.addGestureRecognizer(gesture)
+    private func setupPanGestureRecognizer() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        collectionView.addGestureRecognizer(panGesture)
     }
     
-/*    func setupPanGestureRecognizer(){
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-    } */
-    
-    @objc func handleTap(gesture: UITapGestureRecognizer) {
+    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         let location = gesture.location(in: collectionView)
-        
-        if let indexPath = collectionView.indexPathForItem(at: location) {
-            let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell
-            print("Dokunulan hücrenin indexPath'i: \(indexPath)")
-            let isCellEmpty = cell?.pieceImage.image == nil
-            print(isCellEmpty ? "Hücre Boş" : "Hücrede bir taş var")
-        } else {
-            print("CollectionView dışında bir yere dokunuldu.")
-        }
-    }
-    
-/*    @objc func handlePan(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.location(in: collectionView)
-        guard let indexPath = collectionView.indexPathForItem(at: translation),
-        let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
-        
+
         switch gesture.state {
         case .began:
-            guard cell.pieceImage.image != nil else { return }
+            guard let indexPath = collectionView.indexPathForItem(at: location),
+                  let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell,
+                  let image = cell.pieceImage.image else { return }
+            
+            self.draggingIndexPath = indexPath
+            let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true)!
+            // cell.pieceImage.frame'i collectionView'ın koordinat sistemine göre dönüştür
+            let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
+            snapshot.frame = frame
+            collectionView.addSubview(snapshot)
+            draggingView = snapshot
+            initialCenter = snapshot.center
+            
+            // Orijinal hücreyi gizleyin (opsiyonel)
+            cell.pieceImage.isHidden = true
+            
         case .changed:
-            guard let selectedPiece = board.pieces[indexPath.row] else { return }
-            selectedPiece.
+            guard let draggingView = draggingView, let initialCenter = initialCenter else { return }
+            let translation = gesture.translation(in: collectionView)
+            draggingView.center = CGPoint(x: initialCenter.x + translation.x, y: initialCenter.y + translation.y)
+            
+        case .ended, .cancelled:
+            guard let draggingIndexPath = draggingIndexPath else { return }
+            if let cell = collectionView.cellForItem(at: draggingIndexPath) as? ChessBoardCell {
+                // Orijinal hücreyi tekrar göster
+                cell.isHidden = false
+                cell.pieceImage.isHidden = false
+            }
+            
+            // Sürüklenen görünümü kaldır
+            draggingView?.removeFromSuperview()
+            self.draggingIndexPath = nil
+            self.draggingView = nil
+            self.initialCenter = nil
+           
+        default:
+            break
         }
-        
-        
-    } */
-    
-    
-
-    
+    }
 
 }
+
 
 extension GameScreenVC{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

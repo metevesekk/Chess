@@ -33,7 +33,6 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         layout.itemSize = CGSize(width: boardSize / 8, height: boardSize / 8)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: boardSize, height: boardSize), collectionViewLayout: layout)
         collectionView.register(ChessBoardCell.self, forCellWithReuseIdentifier: "ChessBoardCell")
         collectionView.dataSource = self
@@ -42,8 +41,6 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         view.addSubview(collectionView)
     }
 
-
-    
     func setupBoard(){
         board = Board()
     }
@@ -55,38 +52,37 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         let location = gesture.location(in: collectionView)
-
+        
         switch gesture.state {
         case .began:
             guard let indexPath = collectionView.indexPathForItem(at: location),
-                  let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
+                  let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell,
+                  let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true) else { return }
             
             self.draggingIndexPath = indexPath
-            let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true)!
-            // cell.pieceImage.frame'i collectionView'ın koordinat sistemine göre dönüştür
             let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
             snapshot.frame = frame
             collectionView.addSubview(snapshot)
             draggingView = snapshot
             initialCenter = snapshot.center
-            
-            // Orijinal hücreyi gizleyin (opsiyonel)
             cell.pieceImage.isHidden = true
+            adjustSnapshotCenter(to: location)
             
         case .changed:
-            guard let draggingView = draggingView, let initialCenter = initialCenter else { return }
+            guard let draggingView = draggingView else { return }
+            
             let translation = gesture.translation(in: collectionView)
-            draggingView.center = CGPoint(x: initialCenter.x + translation.x, y: initialCenter.y + translation.y)
+            let newCenter = CGPoint(x: initialCenter!.x + translation.x, y: initialCenter!.y + translation.y)
+            draggingView.center = newCenter
+
+            keepSnapshotWithinBoardBounds()
             
         case .ended, .cancelled:
-            guard let draggingIndexPath = draggingIndexPath else { return }
-            if let cell = collectionView.cellForItem(at: draggingIndexPath) as? ChessBoardCell {
-                // Orijinal hücreyi tekrar göster
-                cell.isHidden = false
-                cell.pieceImage.isHidden = false
-            }
+            guard let draggingIndexPath = draggingIndexPath,
+                  let cell = collectionView.cellForItem(at: draggingIndexPath) as? ChessBoardCell else { return }
             
-            // Sürüklenen görünümü kaldır
+            cell.pieceImage.isHidden = false
+            
             draggingView?.removeFromSuperview()
             self.draggingIndexPath = nil
             self.draggingView = nil
@@ -96,6 +92,29 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             break
         }
     }
+
+    private func adjustSnapshotCenter(to location: CGPoint) {
+        guard let draggingView = draggingView else { return }
+        UIView.animate(withDuration: 0.1) {
+            draggingView.center = location
+        }
+    }
+
+    private func keepSnapshotWithinBoardBounds() {
+        guard let draggingView = draggingView else { return }
+        
+        let minX = draggingView.frame.width / 2
+        let maxX = collectionView.frame.width - minX
+        let minY = draggingView.frame.height / 2
+        let maxY = collectionView.frame.height - minY
+        
+        var newCenter = draggingView.center
+        newCenter.x = max(minX, min(newCenter.x, maxX))
+        newCenter.y = max(minY, min(newCenter.y, maxY))
+        
+        draggingView.center = newCenter
+    }
+
 }
 
 extension ChessBoardVC{

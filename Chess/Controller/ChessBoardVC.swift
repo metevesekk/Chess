@@ -9,17 +9,23 @@ import UIKit
 
 class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // MARK: GLOBAL PROPERTIES
+    
     var board : Board!
     var draggingIndexPath: IndexPath?
     var draggingView: UIView?
     var initialCenter: CGPoint?
     var collectionView: UICollectionView!
     
+    // MARK: VIEWDIDLOAD
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFunctions()
         self.view.backgroundColor = .black
     }
+    
+    // MARK: SETUP FUNCTIONS
     
     func setupFunctions(){
         setupCollectionView()
@@ -45,24 +51,12 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         board = Board()
     }
     
+    
+    // MARK: RECOGNIZER FUNCTIONS
+    
     private func setupPanGestureRecognizer() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         collectionView.addGestureRecognizer(panGesture)
-    }
-    
-    private func setupTapGestureRecognizer(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-        collectionView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func handleTapGesture(_ gesture: UITapGestureRecognizer){
-        let location = gesture.location(in: collectionView)
-        
-        guard let indexPath = collectionView.indexPathForItem(at: location),
-              let cell = collectionView.cellForItem(at: indexPath)else { return }
-        cell.backgroundColor = UIColor.fromHex("4abfa5")
-        cell.layer.borderWidth = cell.bounds.width/15
-        cell.layer.borderColor = UIColor.fromHex("94e5d3").cgColor
     }
     
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
@@ -74,7 +68,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                   let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell,
                   let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true) else { return }
             
-            resetCellsAppearanceExceptSelected()
+            setColor(cell: cell, indexPath: indexPath)
             self.draggingIndexPath = indexPath
             let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
             snapshot.frame = frame
@@ -83,10 +77,6 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             draggingView = snapshot
             initialCenter = snapshot.center
             cell.pieceImage.isHidden = true
-            
-            cell.backgroundColor = UIColor.fromHex("4abfa5")
-            cell.layer.borderWidth = cell.bounds.width/15
-            cell.layer.borderColor = UIColor.fromHex("94e5d3").cgColor
             
             
         case .changed:
@@ -114,6 +104,10 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     
+    
+    
+    // MARK: EXTRA FUNCTIONS
+    
     private func resetCellsAppearanceExceptSelected() {
         for i in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: i, section: 0)
@@ -138,9 +132,22 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         draggingView.center = newCenter
     }
+    
+    private func setColor(cell: ChessBoardCell, indexPath: IndexPath){
+        resetCellsAppearanceExceptSelected()
+        cell.backgroundColor = UIColor.fromHex("4abfa5")
+        cell.layer.borderWidth = cell.bounds.width/15
+        cell.layer.borderColor = UIColor.fromHex("94e5d3").cgColor
+    }
+    
+    private func resetColor(cell: ChessBoardCell, indexPath: IndexPath){
+        cell.backgroundColor = cell.color
+        cell.layer.borderColor = cell.borderColor.cgColor
+    }
 
 }
 
+// MARK: EXTENSION
 
 extension ChessBoardVC{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -157,15 +164,11 @@ extension ChessBoardVC{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        resetCellsAppearanceExceptSelected()
-        cell.backgroundColor = UIColor.fromHex("4abfa5")
-        cell.layer.borderWidth = cell.bounds.width/15
-        cell.layer.borderColor = UIColor.fromHex("94e5d3").cgColor
+        setColor(cell: cell as! ChessBoardCell, indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
-        cell.backgroundColor = cell.color
-        cell.layer.borderColor = cell.borderColor.cgColor
+        resetColor(cell: cell, indexPath: indexPath)
     }
 }

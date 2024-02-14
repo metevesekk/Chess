@@ -63,10 +63,11 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
             snapshot.frame = frame
             collectionView.addSubview(snapshot)
+            snapshot.center = location
             draggingView = snapshot
             initialCenter = snapshot.center
             cell.pieceImage.isHidden = true
-            adjustSnapshotCenter(to: location)
+            
             
         case .changed:
             guard let draggingView = draggingView else { return }

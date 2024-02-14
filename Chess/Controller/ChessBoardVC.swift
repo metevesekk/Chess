@@ -94,13 +94,6 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
 
-    private func adjustSnapshotCenter(to location: CGPoint) {
-        guard let draggingView = draggingView else { return }
-        UIView.animate(withDuration: 0.1) {
-            draggingView.center = location
-        }
-    }
-
     private func keepSnapshotWithinBoardBounds() {
         guard let draggingView = draggingView else { return }
         
@@ -118,6 +111,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
 
 }
 
+
 extension ChessBoardVC{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 64
@@ -130,5 +124,17 @@ extension ChessBoardVC{
         cell.configurePiece(with: piece)
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.backgroundColor = UIColor.fromHex("4abfa5")
+        cell.layer.borderWidth = cell.bounds.width/15
+        cell.layer.borderColor = UIColor.fromHex("94e5d3").cgColor
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
+        cell.backgroundColor = cell.color
+        cell.layer.borderColor = cell.borderColor.cgColor
+    }
 }

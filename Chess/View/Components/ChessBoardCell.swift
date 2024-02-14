@@ -13,6 +13,8 @@ class ChessBoardCell: UICollectionViewCell {
     let numberLabel = UILabel()
     let letters = ["a", "b", "c" ,"d", "e", "f", "g", "h"]
     let numbers = ["8", "7", "6", "5", "4", "3", "2", "1"]
+    var color = UIColor()
+    var borderColor = UIColor()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,10 +47,10 @@ class ChessBoardCell: UICollectionViewCell {
     
     private func setupImageView(){
             LayoutManager.anchor(childView: pieceImage, parentView: self,
-                                 top: topAnchor, paddingTop: self.bounds.width/7,
-                                 leading: leadingAnchor, paddingLeading: self.bounds.width/7,
-                                 bottom: bottomAnchor, paddingBottom: -self.bounds.width/7,
-                                 trailing: trailingAnchor, paddingTrailing: -self.bounds.width/7)
+                                 top: topAnchor, paddingTop: self.bounds.width/8,
+                                 leading: leadingAnchor, paddingLeading: self.bounds.width/8,
+                                 bottom: bottomAnchor, paddingBottom: -self.bounds.width/8,
+                                 trailing: trailingAnchor, paddingTrailing: -self.bounds.width/8)
     }
     
     func configureCell(at indexPath: IndexPath) {
@@ -67,6 +69,9 @@ class ChessBoardCell: UICollectionViewCell {
             numberLabel.text = numbers[numberIndex]
             numberLabel.textColor = textColor
         }
+        
+        color = self.backgroundColor ?? .white
+        borderColor = UIColor(cgColor: CGColor(gray: 1, alpha: 0))
     }
     
     func configurePiece(with piece: Piece?){

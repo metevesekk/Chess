@@ -12,11 +12,13 @@ class Piece{
     let color: PieceColor
     let type: PieceType
     var isAlive: Bool
+    var index : IndexPath
     
-    init(type: PieceType, color: PieceColor, isAlive: Bool) {
+    init(type: PieceType, color: PieceColor, isAlive: Bool, index: IndexPath) {
         self.color = color
         self.type = type
         self.isAlive = isAlive
+        self.index = index
     }
     
     required init?(coder aDecoder: NSCoder) {

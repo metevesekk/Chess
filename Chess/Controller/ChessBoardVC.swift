@@ -162,10 +162,28 @@ extension ChessBoardVC{
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        setColor(cell: cell as! ChessBoardCell, indexPath: indexPath)
+        
+        UIView.animate(withDuration: 0.15){
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
+            
+            if let piece = self.board.pieces[indexPath.row] {
+                
+                let possibleMoves = Move().possibleMoves(with: piece, from: indexPath)
+                for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
+                    cell.showMark(false)
+                }
+                for moveIndexPath in possibleMoves {
+                    if let moveCell = collectionView.cellForItem(at: moveIndexPath) as? ChessBoardCell {
+                        moveCell.showMark(true)
+                    }
+                }
+            }
+            self.setColor(cell: cell, indexPath: indexPath)
+        }
     }
+
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }

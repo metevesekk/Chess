@@ -10,17 +10,8 @@ import RealmSwift
 
 class Move : Board{
 
-    func movePiece(from oldIndex: Coordinate, to newIndex: Coordinate) {
-        guard let pieceToMove = pieces[Move.getIndex(coord: oldIndex)] else { return }
-        guard getCoord(index: Move.getIndex(coord: newIndex)) != getCoord(index: Move.getIndex(coord: newIndex)), Move.getIndex(coord: oldIndex) >= 0, Move.getIndex(coord: oldIndex) < pieces.count,
-              Move.getIndex(coord: newIndex) >= 0, Move.getIndex(coord: newIndex) < pieces.count,
-              pieces[Move.getIndex(coord: newIndex)] == nil, canMove(with: pieceToMove, from: oldIndex, to: newIndex) == true else { return }
-          
-        pieces[Move.getIndex(coord: newIndex)] = pieceToMove
-        pieces[Move.getIndex(coord: oldIndex)] = nil
-      }
     
-    func canMove(with piece: Piece, from oldIndex: Coordinate, to newIndex: Coordinate) -> Bool{
+    func canMove(with piece: Piece, from oldIndex: IndexPath, to newIndex: IndexPath) -> Bool{
         var bool = Bool()
         let possibleMoves = possibleMoves(with: piece, from: oldIndex)
         
@@ -33,53 +24,61 @@ class Move : Board{
         return bool
     }
     
-    func possibleMoves(with piece: Piece, from currentCoords: Coordinate) -> Set<Coordinate> {
-        var possibleIndexes = Set<Coordinate>()
-        let coords = currentCoords
-        if piece.color == .white{
-            switch piece.type{
-            case .pawn:
-                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
-            case .queen:
-                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
-            case .king:
-                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
-            case .bishop:
-                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
-            case .knight:
-                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
-            case .rook:
-                possibleIndexes.insert(Coordinate(column: coords.column , row: coords.row - 1))
+    func possibleMoves(with piece: Piece, from currentCoords: IndexPath) -> Set<IndexPath> {
+        var possibleIndexes = Set<IndexPath>()
+
+        // Taşın türüne ve rengine göre olası hareketler
+        switch piece.type {
+        case .pawn:
+            // Piyonlar sadece ileri doğru hareket eder
+            let direction = piece.color == .white ? -1 : 1
+            let startRow = piece.color == .white ? 6 : 1 // Başlangıç satırı (0-indexed)
+            let singleStep = IndexPath(row: currentCoords.row + direction, section: currentCoords.section)
+            let doubleStep = IndexPath(row: currentCoords.row + 2 * direction, section: currentCoords.section)
+            
+            // İlk hareketinde iki kare ilerleyebilir
+            if currentCoords.row == startRow {
+                possibleIndexes.insert(doubleStep)
             }
-        }
-        
-        return possibleIndexes
-    }
-    
-    
-    func getCoord(index: Int) -> Coordinate{
-        var coord = Coordinate(column: 0, row: 8)
-        
-        if index <= 8 {
-            for _ in 0...index{
-                coord.row += 1
+            possibleIndexes.insert(singleStep)
+
+        case .knight:
+            // Atların L şeklindeki hareketleri
+            let moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
+            for move in moves {
+                let destination = IndexPath(row: currentCoords.row + move.0, section: currentCoords.section + move.1)
+                if destination.row >= 0, destination.row < 8, destination.section >= 0, destination.section < 8 {
+                    possibleIndexes.insert(destination)
+                }
             }
-        } else{
-            for _ in 0...index / 8{
-                coord.column -= 1
-                for _ in 0...8{
-                    coord.row += 1
+
+        case .bishop, .rook, .queen:
+            // Fil, kale ve vezir için hareketler
+            let directions = piece.type == .bishop ? [(-1, -1), (-1, 1), (1, -1), (1, 1)] :
+                             piece.type == .rook ? [(-1, 0), (1, 0), (0, -1), (0, 1)] :
+                             [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
+            for direction in directions {
+                var step = 1
+                var destination = IndexPath(row: currentCoords.row + direction.0 * step, section: currentCoords.section + direction.1 * step)
+                while destination.row >= 0, destination.row < 8, destination.section >= 0, destination.section < 8 {
+                    possibleIndexes.insert(destination)
+                    step += 1
+                    destination = IndexPath(row: currentCoords.row + direction.0 * step, section: currentCoords.section + direction.1 * step)
+                }
+            }
+
+        case .king:
+            // Kralın bir kare her yöne hareketi
+            let moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+            for move in moves {
+                let destination = IndexPath(row: currentCoords.row + move.0, section: currentCoords.section + move.1)
+                if destination.row >= 0, destination.row < 8, destination.section >= 0, destination.section < 8 {
+                    possibleIndexes.insert(destination)
                 }
             }
         }
 
-        return coord
+        return possibleIndexes
     }
-    
-    static func getIndex(coord: Coordinate) -> Int{
-        let x = coord.column
-        let y = coord.row
-        return 8 * y + x
-    }
-        
+
 }

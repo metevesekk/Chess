@@ -15,12 +15,13 @@ class ChessBoardCell: UICollectionViewCell {
     let numbers = ["8", "7", "6", "5", "4", "3", "2", "1"]
     var color = UIColor()
     var borderColor = UIColor()
+    let markImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFunctions()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -29,8 +30,9 @@ class ChessBoardCell: UICollectionViewCell {
         setupImageView()
         setupLetterLabel()
         setupNumberLabel()
+        setupMarkImageView()
     }
-
+    
     private func setupLetterLabel(){
         CustomLabel.setupLabel(letterLabel, tintColor: .clear, textColor: .black, fontSize: self.bounds.width/4, fontName: "Avenir-Heavy")
         LayoutManager.anchor(childView: letterLabel, parentView: self,
@@ -46,11 +48,11 @@ class ChessBoardCell: UICollectionViewCell {
     }
     
     private func setupImageView(){
-            LayoutManager.anchor(childView: pieceImage, parentView: self,
-                                 top: topAnchor, paddingTop: self.bounds.width/8,
-                                 leading: leadingAnchor, paddingLeading: self.bounds.width/8,
-                                 bottom: bottomAnchor, paddingBottom: -self.bounds.width/8,
-                                 trailing: trailingAnchor, paddingTrailing: -self.bounds.width/8)
+        LayoutManager.anchor(childView: pieceImage, parentView: self,
+                             top: topAnchor, paddingTop: self.bounds.width/8,
+                             leading: leadingAnchor, paddingLeading: self.bounds.width/8,
+                             bottom: bottomAnchor, paddingBottom: -self.bounds.width/8,
+                             trailing: trailingAnchor, paddingTrailing: -self.bounds.width/8)
     }
     
     func configureCell(at indexPath: IndexPath) {
@@ -80,6 +82,26 @@ class ChessBoardCell: UICollectionViewCell {
             pieceImage.image = UIImage(named: imageName)
         } else {
             pieceImage.image = nil
+        }
+    }
+    
+    private func setupMarkImageView() {
+        markImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(markImageView)
+        markImageView.isHidden = true // Initially hidden
+        markImageView.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            markImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            markImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            markImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
+            markImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5)
+        ])
+    }
+    
+    func showMark(_ show: Bool) {
+        markImageView.isHidden = !show
+        if show {
+            markImageView.image = UIImage(named: "mark")
         }
     }
 }

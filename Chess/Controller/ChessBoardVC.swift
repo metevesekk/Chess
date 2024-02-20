@@ -144,7 +144,24 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         cell.backgroundColor = cell.color
         cell.layer.borderColor = cell.borderColor.cgColor
     }
-
+    
+    private func setMark(cell: ChessBoardCell, indexPath: IndexPath){
+        if let piece = self.board.pieces[indexPath.row] {
+            
+            let possibleMoves = Move().possibleMoves(with: piece, from: indexPath)
+            for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
+                cell.showMark(false)
+            }
+            for moveIndexPath in possibleMoves {
+                if let moveCell = collectionView.cellForItem(at: moveIndexPath!) as? ChessBoardCell {
+                    moveCell.showMark(true)
+                }
+            }
+        }
+    }
+    
+    
+    
 }
 
 // MARK: EXTENSION
@@ -168,18 +185,7 @@ extension ChessBoardVC{
         UIView.animate(withDuration: 0.15){
             guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
             
-            if let piece = self.board.pieces[indexPath.row] {
-                
-                let possibleMoves = Move().possibleMoves(with: piece, from: indexPath)
-                for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
-                    cell.showMark(false)
-                }
-                for moveIndexPath in possibleMoves {
-                    if let moveCell = collectionView.cellForItem(at: moveIndexPath!) as? ChessBoardCell {
-                        moveCell.showMark(true)
-                    }
-                }
-            }
+            self.setMark(cell: cell, indexPath: indexPath)
             self.setColor(cell: cell, indexPath: indexPath)
         }
     }

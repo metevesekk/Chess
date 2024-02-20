@@ -175,7 +175,7 @@ extension ChessBoardVC{
                     cell.showMark(false)
                 }
                 for moveIndexPath in possibleMoves {
-                    if let moveCell = collectionView.cellForItem(at: moveIndexPath) as? ChessBoardCell {
+                    if let moveCell = collectionView.cellForItem(at: moveIndexPath!) as? ChessBoardCell {
                         moveCell.showMark(true)
                     }
                 }

@@ -6,79 +6,80 @@
 //
 
 import Foundation
-import RealmSwift
 
-class Move : Board{
-
-    
-    func canMove(with piece: Piece, from oldIndex: IndexPath, to newIndex: IndexPath) -> Bool{
-        var bool = Bool()
-        let possibleMoves = possibleMoves(with: piece, from: oldIndex)
+class Move {
+    func possibleMoves(with piece: Piece, from currentCoords: IndexPath) -> Set<IndexPath?> {
+        var possibleMoves = Set<IndexPath?>()
         
-        if possibleMoves.contains(newIndex){
-            bool = true
-        } else{
-            bool = false
+        let directionOffsets = getDirectionOffsets(for: piece, from: currentCoords)
+        
+        for direction in directionOffsets {
+            var nextCoords = apply(direction: direction, to: currentCoords)
+            while isValid(nextCoords) {
+                possibleMoves.insert(nextCoords)
+                
+                if piece.type == .pawn || piece.type == .king || piece.type == .knight || thereIsAPieceAt(nextCoords) {
+                    break
+                }
+                
+                nextCoords = apply(direction: direction, to: nextCoords!)
+            }
         }
         
-        return bool
+        return possibleMoves.filter { $0 != nil }
     }
     
-    func possibleMoves(with piece: Piece, from currentCoords: IndexPath) -> Set<IndexPath> {
-        var possibleIndexes = Set<IndexPath>()
-
-        // Taşın türüne ve rengine göre olası hareketler
+    private func getDirectionOffsets(for piece: Piece, from currentCoords: IndexPath) -> [(row: Int, col: Int)] {
         switch piece.type {
         case .pawn:
-            // Piyonlar sadece ileri doğru hareket eder
-            let direction = piece.color == .white ? -1 : 1
-            let startRow = piece.color == .white ? 6 : 1 // Başlangıç satırı (0-indexed)
-            let singleStep = IndexPath(row: currentCoords.row + direction, section: currentCoords.section)
-            let doubleStep = IndexPath(row: currentCoords.row + 2 * direction, section: currentCoords.section)
+            let initialRow = piece.color == .black ? 1 : 6
+            let moveForward = piece.color == .black ? 1 : -1
+            var moves = [(moveForward, 0)]
+            if currentCoords.item / 8 == initialRow {
+                moves.append((2 * moveForward, 0))
+            }
             
-            // İlk hareketinde iki kare ilerleyebilir
-            if currentCoords.row == startRow {
-                possibleIndexes.insert(doubleStep)
-            }
-            possibleIndexes.insert(singleStep)
-
+            moves += [(moveForward, -1), (moveForward, 1)]
+            return moves.filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
+        case .rook:
+            return [(1, 0), (-1, 0), (0, 1), (0, -1)]
         case .knight:
-            // Atların L şeklindeki hareketleri
-            let moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
-            for move in moves {
-                let destination = IndexPath(row: currentCoords.row + move.0, section: currentCoords.section + move.1)
-                if destination.row >= 0, destination.row < 8, destination.section >= 0, destination.section < 8 {
-                    possibleIndexes.insert(destination)
-                }
-            }
-
-        case .bishop, .rook, .queen:
-            // Fil, kale ve vezir için hareketler
-            let directions = piece.type == .bishop ? [(-1, -1), (-1, 1), (1, -1), (1, 1)] :
-                             piece.type == .rook ? [(-1, 0), (1, 0), (0, -1), (0, 1)] :
-                             [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
-            for direction in directions {
-                var step = 1
-                var destination = IndexPath(row: currentCoords.row + direction.0 * step, section: currentCoords.section + direction.1 * step)
-                while destination.row >= 0, destination.row < 8, destination.section >= 0, destination.section < 8 {
-                    possibleIndexes.insert(destination)
-                    step += 1
-                    destination = IndexPath(row: currentCoords.row + direction.0 * step, section: currentCoords.section + direction.1 * step)
-                }
-            }
-
-        case .king:
-            // Kralın bir kare her yöne hareketi
-            let moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-            for move in moves {
-                let destination = IndexPath(row: currentCoords.row + move.0, section: currentCoords.section + move.1)
-                if destination.row >= 0, destination.row < 8, destination.section >= 0, destination.section < 8 {
-                    possibleIndexes.insert(destination)
-                }
-            }
+            return [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
+        case .bishop:
+            return [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+        case .queen, .king:
+            return [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
         }
-
-        return possibleIndexes
     }
-
 }
+
+private func apply(direction: (row: Int, col: Int), to indexPath: IndexPath) -> IndexPath? {
+    let row = indexPath.item / 8 + direction.row
+    let col = indexPath.item % 8 + direction.col
+    if row >= 0 && row < 8 && col >= 0 && col < 8 {
+        return IndexPath(item: row * 8 + col, section: indexPath.section)
+    } else {
+        return nil
+    }
+}
+
+private func isValid(_ indexPath: IndexPath?) -> Bool {
+    guard let indexPath = indexPath else { return false }
+    let row = indexPath.item / 8
+    let col = indexPath.item % 8
+    return row >= 0 && row < 8 && col >= 0 && col < 8
+}
+
+private func thereIsAPieceAt(_ indexPath: IndexPath?) -> Bool {
+    // Implement based on your game's logic
+    return false
+}
+
+private func isValidOffset(currentCoords: IndexPath, offset: (row: Int, col: Int)) -> Bool {
+    let currentRow = currentCoords.item / 8
+    let currentCol = currentCoords.item % 8
+    let newRow = currentRow + offset.row
+    let newCol = currentCol + offset.col
+    return newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8
+}
+

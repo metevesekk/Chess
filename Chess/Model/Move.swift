@@ -8,6 +8,14 @@
 import Foundation
 
 class Move {
+    
+    var board = Board()
+    
+    func isTherePieceAt(to targetCoords: IndexPath?) -> Bool{
+        guard let targetCoords = targetCoords else { return false }
+        return board.spaces().contains(targetCoords.item) ? true : false
+    }
+    
     func possibleMoves(with piece: Piece, from currentCoords: IndexPath) -> Set<IndexPath?> {
         var possibleMoves = Set<IndexPath?>()
         
@@ -15,10 +23,10 @@ class Move {
         
         for direction in directionOffsets {
             var nextCoords = apply(direction: direction, to: currentCoords)
-            while isValid(nextCoords) {
+            while isValid(nextCoords) && isTherePieceAt(to: nextCoords){
                 possibleMoves.insert(nextCoords)
                 
-                if piece.type == .pawn || piece.type == .king || piece.type == .knight || thereIsAPieceAt(nextCoords) {
+                if piece.type == .pawn || piece.type == .king || piece.type == .knight{
                     break
                 }
                 
@@ -35,20 +43,20 @@ class Move {
             let initialRow = piece.color == .black ? 1 : 6
             let moveForward = piece.color == .black ? 1 : -1
             var moves = [(moveForward, 0)]
-            if currentCoords.item / 8 == initialRow {
+            if currentCoords.item / 8 == initialRow && piece.moveCount == 0 {
                 moves.append((2 * moveForward, 0))
             }
             
-            moves += [(moveForward, -1), (moveForward, 1)]
+        //    moves += [(moveForward, -1), (moveForward, 1)]
             return moves.filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
         case .rook:
-            return [(1, 0), (-1, 0), (0, 1), (0, -1)]
+            return [(1, 0), (-1, 0), (0, 1), (0, -1)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
         case .knight:
             return [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
         case .bishop:
-            return [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+            return [(1, 1), (1, -1), (-1, 1), (-1, -1)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
         case .queen, .king:
-            return [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+            return [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
         }
     }
 }
@@ -68,11 +76,6 @@ private func isValid(_ indexPath: IndexPath?) -> Bool {
     let row = indexPath.item / 8
     let col = indexPath.item % 8
     return row >= 0 && row < 8 && col >= 0 && col < 8
-}
-
-private func thereIsAPieceAt(_ indexPath: IndexPath?) -> Bool {
-    // Implement based on your game's logic
-    return false
 }
 
 private func isValidOffset(currentCoords: IndexPath, offset: (row: Int, col: Int)) -> Bool {

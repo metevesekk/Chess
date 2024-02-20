@@ -17,12 +17,22 @@ class Board {
         setupBackRows()
     }
     
+    func spaces() -> Set<Int>{
+        var emptyIndexes = Set<Int>()
+        for index in 0...63{
+            if pieces[index] == nil{
+                emptyIndexes.insert(index)
+            }
+        }
+        return emptyIndexes
+    }
+    
     private func setupPawns() {
         for index in 8..<16 {
-            pieces[index] = Piece(type: .pawn, color: .black, isAlive: true, index: IndexPath(index: index))
+            pieces[index] = Piece(type: .pawn, color: .black, isAlive: true, index: IndexPath(index: index), moveCount: 0)
         }
         for index in 48..<56 {
-            pieces[index] = Piece(type: .pawn, color: .white, isAlive: true, index: IndexPath(index: index))
+            pieces[index] = Piece(type: .pawn, color: .white, isAlive: true, index: IndexPath(index: index), moveCount: 0)
         }
     }
     
@@ -30,8 +40,8 @@ class Board {
         let backRowTypes: [PieceType] = [.rook, .knight, .bishop, .king, .queen, .bishop, .knight, .rook]
         
         for (index, type) in backRowTypes.enumerated() {
-            pieces[index] = Piece(type: type, color: .black, isAlive: true, index: IndexPath(index: index))
-            pieces[56 + index] = Piece(type: type, color: .white, isAlive: true, index: IndexPath(index: index))
+            pieces[index] = Piece(type: type, color: .black, isAlive: true, index: IndexPath(index: index), moveCount: 0)
+            pieces[56 + index] = Piece(type: type, color: .white, isAlive: true, index: IndexPath(index: index), moveCount: 0)
         }
     }
     

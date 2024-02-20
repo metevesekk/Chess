@@ -6,8 +6,3 @@
 //
 
 import Foundation
-
-enum PieceColor {
-    case white
-    case black
-}

@@ -11,9 +11,6 @@
 		355AFE8A2B73EAB400E8F48A /* GameScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AFE892B73EAB400E8F48A /* GameScreenVC.swift */; };
 		355AFE8C2B73EAC800E8F48A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AFE8B2B73EAC800E8F48A /* SettingsVC.swift */; };
 		355AFE8E2B73EAFB00E8F48A /* CreateGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AFE8D2B73EAFB00E8F48A /* CreateGameVC.swift */; };
-		35962FDD2B77B47200388F11 /* PieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35962FDC2B77B47200388F11 /* PieceType.swift */; };
-		35962FDF2B77B47E00388F11 /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35962FDE2B77B47E00388F11 /* PieceColor.swift */; };
-		35A502D22B79169200D079E8 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A502D12B79169200D079E8 /* Coordinate.swift */; };
 		35D1C96F2B73DF950029E2A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1C96E2B73DF950029E2A5 /* AppDelegate.swift */; };
 		35D1C9712B73DF950029E2A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1C9702B73DF950029E2A5 /* SceneDelegate.swift */; };
 		35D1C9732B73DF950029E2A5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1C9722B73DF950029E2A5 /* LoginVC.swift */; };
@@ -64,9 +61,6 @@
 		355AFE892B73EAB400E8F48A /* GameScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenVC.swift; sourceTree = "<group>"; };
 		355AFE8B2B73EAC800E8F48A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		355AFE8D2B73EAFB00E8F48A /* CreateGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameVC.swift; sourceTree = "<group>"; };
-		35962FDC2B77B47200388F11 /* PieceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceType.swift; sourceTree = "<group>"; };
-		35962FDE2B77B47E00388F11 /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
-		35A502D12B79169200D079E8 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		35D1C96B2B73DF950029E2A5 /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D1C96E2B73DF950029E2A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35D1C9702B73DF950029E2A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,12 +125,9 @@
 				35DF6C062B75374D00AE1312 /* Move.swift */,
 				35DF6C122B753FE000AE1312 /* Board.swift */,
 				35DF6C082B75375C00AE1312 /* Piece.swift */,
-				35962FDC2B77B47200388F11 /* PieceType.swift */,
-				35962FDE2B77B47E00388F11 /* PieceColor.swift */,
-				35A502D12B79169200D079E8 /* Coordinate.swift */,
 				35DF6C0A2B75376600AE1312 /* Player.swift */,
-				35DF6C0C2B75378E00AE1312 /* Game.swift */,
 				35DF6C0E2B75379A00AE1312 /* History.swift */,
+				35DF6C0C2B75378E00AE1312 /* Game.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -447,12 +438,9 @@
 				35DF6BFD2B7517EE00AE1312 /* LayoutManager.swift in Sources */,
 				35D1C9732B73DF950029E2A5 /* LoginVC.swift in Sources */,
 				35DF6C052B7536D100AE1312 /* MenuVC.swift in Sources */,
-				35962FDD2B77B47200388F11 /* PieceType.swift in Sources */,
-				35962FDF2B77B47E00388F11 /* PieceColor.swift in Sources */,
 				355AFE8E2B73EAFB00E8F48A /* CreateGameVC.swift in Sources */,
 				35DF6BFA2B7517A800AE1312 /* UIView+Extensions.swift in Sources */,
 				35DF6BF62B75172B00AE1312 /* ChessBoardCell.swift in Sources */,
-				35A502D22B79169200D079E8 /* Coordinate.swift in Sources */,
 				35DF6C032B7535BF00AE1312 /* ThemeManager.swift in Sources */,
 				35DF6C132B753FE000AE1312 /* Board.swift in Sources */,
 				35D1C96F2B73DF950029E2A5 /* AppDelegate.swift in Sources */,

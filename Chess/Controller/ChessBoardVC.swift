@@ -69,6 +69,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                   let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true) else { return }
             
             setColor(cell: cell, indexPath: indexPath)
+            setMark(cell: cell, indexPath: indexPath)
             self.draggingIndexPath = indexPath
             let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
             snapshot.frame = frame
@@ -156,6 +157,10 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 if let moveCell = collectionView.cellForItem(at: moveIndexPath!) as? ChessBoardCell {
                     moveCell.showMark(true)
                 }
+            }
+        } else{
+            for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
+                cell.showMark(false)
             }
         }
     }

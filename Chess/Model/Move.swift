@@ -11,9 +11,18 @@ class Move {
     
     var board = Board()
     
-    func isTherePieceAt(to targetCoords: IndexPath?) -> Bool{
+    func canMove(with piece: Piece, to targetCoords: IndexPath?) -> Bool{
+        var bool = Bool()
         guard let targetCoords = targetCoords else { return false }
-        return board.spaces().contains(targetCoords.item) ? true : false
+        let enemyPiece = board.pieces[targetCoords.item]
+        if board.spaces().contains(targetCoords.item){
+            bool = true
+        } else if board.spaces().contains(targetCoords.item) && enemyPiece?.color != piece.color{
+            bool = true
+        } else {
+            bool = false
+        }
+        return bool
     }
     
     func possibleMoves(with piece: Piece, from currentCoords: IndexPath) -> Set<IndexPath?> {
@@ -23,7 +32,7 @@ class Move {
         
         for direction in directionOffsets {
             var nextCoords = apply(direction: direction, to: currentCoords)
-            while isValid(nextCoords) && isTherePieceAt(to: nextCoords){
+            while isValid(nextCoords) && canMove(with: piece, to: nextCoords){
                 possibleMoves.insert(nextCoords)
                 
                 if piece.type == .pawn || piece.type == .king || piece.type == .knight{

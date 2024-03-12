@@ -1,8 +1,8 @@
+
+// Move.swift
+// Chess
 //
-//  Move.swift
-//  Chess
-//
-//  Created by Mete Vesek on 8.02.2024.
+// Created by Mete Vesek on 8.02.2024.
 //
 
 import Foundation
@@ -47,23 +47,34 @@ class Move {
         var moves: [IndexPath] = []
         let direction = piece.color == .white ? -1 : 1
         let startRow = piece.color == .white ? 6 : 1
-        let oneStepForward = IndexPath(item: currentCoords.item + direction * 8, section: currentCoords.section)
+        let oneStepForwardIndex = currentCoords.item + direction * 8
         
-        if board.isEmpty(at: oneStepForward) {
-            moves.append(oneStepForward)
-            if currentCoords.item / 8 == startRow {
-                let twoStepsForward = IndexPath(item: currentCoords.item + 2 * direction * 8, section: currentCoords.section)
-                if board.isEmpty(at: twoStepsForward) {
-                    moves.append(twoStepsForward)
+        if oneStepForwardIndex >= 0 && oneStepForwardIndex < 64 {
+            let oneStepForward = IndexPath(item: oneStepForwardIndex, section: currentCoords.section)
+            if board.isEmpty(at: oneStepForward) {
+                moves.append(oneStepForward)
+                
+                if currentCoords.item / 8 == startRow {
+                    let twoStepsForwardIndex = currentCoords.item + 2 * direction * 8
+                    if twoStepsForwardIndex >= 0 && twoStepsForwardIndex < 64 {
+                        let twoStepsForward = IndexPath(item: twoStepsForwardIndex, section: currentCoords.section)
+                        if board.isEmpty(at: twoStepsForward) {
+                            moves.append(twoStepsForward)
+                        }
+                    }
                 }
             }
         }
-        
+
         // Capture moves
         let attackMoves = [(-1, direction), (1, direction)]
         for (dx, dy) in attackMoves {
-            if let diagTarget = offset(indexPath: currentCoords, dx: dx, dy: dy), board.pieceAt(indexPath: diagTarget)?.color != piece.color {
-                moves.append(diagTarget)
+            let diagIndex = currentCoords.item + dx + dy * 8
+            if diagIndex >= 0 && diagIndex < 64 {
+                let diagTarget = IndexPath(item: diagIndex, section: currentCoords.section)
+                if let targetPiece = board.pieceAt(indexPath: diagTarget), targetPiece.color != piece.color {
+                    moves.append(diagTarget)
+                }
             }
         }
         
@@ -83,7 +94,9 @@ class Move {
             var nextCoords = offset(indexPath: currentCoords, dx: dx, dy: dy)
             while let next = nextCoords, board.isEmpty(at: next) {
                 moves.append(next)
-                nextCoords = offset(indexPath: next, dx: dx, dy: dy)
+                nextCoords = offset(indexPath:
+
+ next, dx: dx, dy: dy)
             }
             if let next = nextCoords, board.pieceAt(indexPath: next)?.color != piece.color {
                 moves.append(next)
@@ -107,4 +120,3 @@ class Move {
         return nil
     }
 }
-

@@ -66,6 +66,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         case .began:
             guard let indexPath = collectionView.indexPathForItem(at: location),
                   let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell,
+                  self.board.pieces[indexPath.row] != nil,
                   let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true) else { return }
             
             selectCell(at: indexPath)
@@ -80,12 +81,13 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             
             
         case .changed:
-            guard let indexPath = collectionView.indexPathForItem(at: initialCenter!),
+            guard let initialCenter = initialCenter,
+                  let indexPath = collectionView.indexPathForItem(at: initialCenter),
                   let draggingView = draggingView else { return }
             
             selectCell(at: indexPath)
             let translation = gesture.translation(in: collectionView)
-            let newCenter = CGPoint(x: initialCenter!.x + translation.x, y: initialCenter!.y + translation.y)
+            let newCenter = CGPoint(x: initialCenter.x + translation.x, y: initialCenter.y + translation.y)
             draggingView.center = newCenter
 
             
@@ -125,13 +127,16 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         UIView.animate(withDuration: 0.2, animations: {
             draggingView.center = targetCell.center
         }) { [weak self] _ in
-            sourceCell.pieceImage.removeFromSuperview()
+    
             draggingView.removeFromSuperview()
-           
+            sourceCell.pieceImage.isHidden = true
             
             self?.board.movePiece(from: sourceIndexPath, to: targetIndexPath)
-
+            
             targetCell.configurePiece(with: self?.board.pieces[targetIndexPath.row])
+ 
+            targetCell.pieceImage.isHidden = false
+
             self?.clearAllMarks()
             self?.resetColor(cell: sourceCell, indexPath: sourceIndexPath)
             self?.resetDraggingState()
@@ -144,6 +149,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         initialCenter = nil
     }
 
+    
     private func resetDraggingItemToInitialPosition(draggingView: UIView, sourceCell: ChessBoardCell) {
         UIView.animate(withDuration: 0.2, animations: {
             draggingView.center = self.initialCenter ?? sourceCell.center

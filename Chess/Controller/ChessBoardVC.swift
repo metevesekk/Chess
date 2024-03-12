@@ -68,8 +68,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                   let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell,
                   let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true) else { return }
             
-            setColor(cell: cell, indexPath: indexPath)
-            setMark(cell: cell, indexPath: indexPath)
+            selectCell(at: indexPath)
             self.draggingIndexPath = indexPath
             let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
             snapshot.frame = frame
@@ -81,12 +80,15 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             
             
         case .changed:
-            guard let draggingView = draggingView else { return }
+            guard let indexPath = collectionView.indexPathForItem(at: initialCenter!),
+                  let draggingView = draggingView else { return }
             
+            selectCell(at: indexPath)
             let translation = gesture.translation(in: collectionView)
             let newCenter = CGPoint(x: initialCenter!.x + translation.x, y: initialCenter!.y + translation.y)
             draggingView.center = newCenter
 
+            
             keepSnapshotWithinBoardBounds()
             
         case .ended, .cancelled:
@@ -127,27 +129,17 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             draggingView.removeFromSuperview()
            
             
-            // Taşı kaynak hücreden hedef hücreye taşıyın ve kaynak hücreyi nil yapın.
             self?.board.movePiece(from: sourceIndexPath, to: targetIndexPath)
-            self?.board.pieces[sourceIndexPath.row] = nil // Kaynak hücreyi nil yap
+            self?.board.pieces[sourceIndexPath.row] = nil
 
-            // Hedef hücreyi yeni taş ile güncelleyin.
             targetCell.configurePiece(with: self?.board.pieces[targetIndexPath.row])
-            
-            // Tüm markImageView'ları temizleyin.
             self?.clearAllMarks()
-
-            // Sürüklenen öğenin yeni pozisyonunu seçili olarak işaretleyin.
-           // self?.selectCell(at: targetIndexPath)
             self?.resetColor(cell: sourceCell, indexPath: sourceIndexPath)
-            
-            // Taşın hareket ettirilmesi sonrası gerekli temizlik işlemlerini yapın.
             self?.resetDraggingState()
         }
     }
 
     private func resetDraggingState() {
-        
         draggingIndexPath = nil
         draggingView = nil
         initialCenter = nil
@@ -224,7 +216,6 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             cell.showMark(false)
         }
     }
-    
     
     private func selectCell(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }

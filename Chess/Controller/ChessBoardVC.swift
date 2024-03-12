@@ -90,15 +90,25 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             keepSnapshotWithinBoardBounds()
             
         case .ended, .cancelled:
-            guard let draggingIndexPath = draggingIndexPath,
-                  let cell = collectionView.cellForItem(at: draggingIndexPath) as? ChessBoardCell else { return }
-            
-            cell.pieceImage.isHidden = false
-            
-            draggingView?.removeFromSuperview()
-            self.draggingIndexPath = nil
-            self.draggingView = nil
-            self.initialCenter = nil
+                guard let draggingIndexPath = draggingIndexPath,
+                      let draggingView = draggingView,
+                      let sourceCell = collectionView.cellForItem(at: draggingIndexPath) as? ChessBoardCell else {
+                    return
+                }
+
+                let targetLocation = collectionView.convert(draggingView.center, to: collectionView)
+                guard let targetIndexPath = collectionView.indexPathForItem(at: targetLocation),
+                      let targetCell = collectionView.cellForItem(at: targetIndexPath) as? ChessBoardCell else {
+                    resetDraggingItemToInitialPosition(draggingView: draggingView, sourceCell: sourceCell)
+                    return
+                }
+
+                if targetCell.markImageView.isHidden {
+                    resetDraggingItemToInitialPosition(draggingView: draggingView, sourceCell: sourceCell)
+                } else {
+                    finishDraggingItem(draggingView: draggingView, sourceIndexPath: draggingIndexPath, targetIndexPath: targetIndexPath, sourceCell: sourceCell, targetCell: targetCell)
+                }
+
            
         default:
             break
@@ -108,6 +118,61 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     
     // MARK: EXTRA FUNCTIONS
+    
+    private func finishDraggingItem(draggingView: UIView, sourceIndexPath: IndexPath, targetIndexPath: IndexPath, sourceCell: ChessBoardCell, targetCell: ChessBoardCell) {
+        UIView.animate(withDuration: 0.2, animations: {
+            draggingView.center = targetCell.center
+        }) { [weak self] _ in
+            sourceCell.pieceImage.removeFromSuperview()
+       //     sourceCell.pieceImage.isHidden = false
+            
+            // Taşı kaynak hücreden hedef hücreye taşıyın ve kaynak hücreyi nil yapın.
+            self?.board.movePiece(from: sourceIndexPath, to: targetIndexPath)
+            self?.board.pieces[sourceIndexPath.row] = nil // Kaynak hücreyi nil yap
+
+            // Hedef hücreyi yeni taş ile güncelleyin.
+            targetCell.configurePiece(with: self?.board.pieces[targetIndexPath.row])
+            
+            // Tüm markImageView'ları temizleyin.
+            self?.clearAllMarks()
+
+            // Sürüklenen öğenin yeni pozisyonunu seçili olarak işaretleyin.
+            self?.selectCell(at: targetIndexPath)
+            
+            // Taşın hareket ettirilmesi sonrası gerekli temizlik işlemlerini yapın.
+            self?.resetDraggingState()
+        }
+    }
+
+    private func clearAllMarks() {
+        for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
+            cell.showMark(false)
+        }
+    }
+
+    private func selectCell(at indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
+        setColor(cell: cell, indexPath: indexPath)
+        setMark(cell: cell, indexPath: indexPath)
+    }
+
+
+    private func resetDraggingState() {
+        draggingIndexPath = nil
+        draggingView = nil
+        initialCenter = nil
+        // Diğer temizlik işlemleri
+    }
+
+    private func resetDraggingItemToInitialPosition(draggingView: UIView, sourceCell: ChessBoardCell) {
+        UIView.animate(withDuration: 0.2, animations: {
+            draggingView.center = self.initialCenter ?? sourceCell.center
+        }) { _ in
+            draggingView.removeFromSuperview()
+            sourceCell.pieceImage.isHidden = false
+        }
+    }
+
     
     private func resetCellsAppearanceExceptSelected() {
         for i in 0..<collectionView.numberOfItems(inSection: 0) {

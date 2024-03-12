@@ -27,6 +27,30 @@ class Board {
         return emptyIndexes
     }
     
+    func movePiece(from sourceIndex: IndexPath, to targetIndex: IndexPath) {
+        // Kaynak ve hedef indekslerin uygun aralıkta olduğundan emin olun
+        guard sourceIndex.row >= 0, sourceIndex.row < pieces.count,
+              targetIndex.row >= 0, targetIndex.row < pieces.count else {
+            print("Invalid index")
+            return
+        }
+
+        // Kaynakta bir taş olup olmadığını kontrol et
+        guard let pieceToMove = pieces[sourceIndex.row] else {
+            print("No piece at source index")
+            return
+        }
+
+        // Taşı hedef indekse hareket ettir
+        pieces[targetIndex.row] = pieceToMove
+        pieces[sourceIndex.row] = nil
+
+        // Taşın konumunu ve hareket sayısını güncelle
+        pieces[targetIndex.row]?.index = targetIndex
+        pieces[targetIndex.row]?.moveCount += 1
+    }
+
+    
     private func setupPawns() {
         for index in 8..<16 {
             pieces[index] = Piece(type: .pawn, color: .black, isAlive: true, index: IndexPath(index: index), moveCount: 0)

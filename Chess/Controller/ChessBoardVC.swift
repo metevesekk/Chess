@@ -124,7 +124,8 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             draggingView.center = targetCell.center
         }) { [weak self] _ in
             sourceCell.pieceImage.removeFromSuperview()
-       //     sourceCell.pieceImage.isHidden = false
+            draggingView.removeFromSuperview()
+           
             
             // Taşı kaynak hücreden hedef hücreye taşıyın ve kaynak hücreyi nil yapın.
             self?.board.movePiece(from: sourceIndexPath, to: targetIndexPath)
@@ -137,31 +138,19 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             self?.clearAllMarks()
 
             // Sürüklenen öğenin yeni pozisyonunu seçili olarak işaretleyin.
-            self?.selectCell(at: targetIndexPath)
+           // self?.selectCell(at: targetIndexPath)
+            self?.resetColor(cell: sourceCell, indexPath: sourceIndexPath)
             
             // Taşın hareket ettirilmesi sonrası gerekli temizlik işlemlerini yapın.
             self?.resetDraggingState()
         }
     }
 
-    private func clearAllMarks() {
-        for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
-            cell.showMark(false)
-        }
-    }
-
-    private func selectCell(at indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
-        setColor(cell: cell, indexPath: indexPath)
-        setMark(cell: cell, indexPath: indexPath)
-    }
-
-
     private func resetDraggingState() {
+        
         draggingIndexPath = nil
         draggingView = nil
         initialCenter = nil
-        // Diğer temizlik işlemleri
     }
 
     private func resetDraggingItemToInitialPosition(draggingView: UIView, sourceCell: ChessBoardCell) {
@@ -230,8 +219,18 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     
+    private func clearAllMarks() {
+        for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
+            cell.showMark(false)
+        }
+    }
     
     
+    private func selectCell(at indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
+        setColor(cell: cell, indexPath: indexPath)
+        setMark(cell: cell, indexPath: indexPath)
+    }
 }
 
 // MARK: EXTENSION
@@ -254,9 +253,7 @@ extension ChessBoardVC{
         
         UIView.animate(withDuration: 0.15){
             guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
-            
-            self.setMark(cell: cell, indexPath: indexPath)
-            self.setColor(cell: cell, indexPath: indexPath)
+            self.selectCell(at: indexPath)
         }
     }
 

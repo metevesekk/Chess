@@ -17,6 +17,15 @@ class Board {
         setupBackRows()
     }
     
+    func pieceAt(indexPath: IndexPath) -> Piece? {
+            guard indexPath.item >= 0, indexPath.item < pieces.count else { return nil }
+            return pieces[indexPath.item]
+        }
+        
+        func isEmpty(at indexPath: IndexPath) -> Bool {
+            pieceAt(indexPath: indexPath) == nil
+        }
+    
     func spaces() -> Set<Int>{
         var emptyIndexes = Set<Int>()
         for index in 0...63{

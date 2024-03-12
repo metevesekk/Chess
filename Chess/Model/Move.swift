@@ -9,88 +9,102 @@ import Foundation
 
 class Move {
     
-    var board = Board()
+    func canMove(piece: Piece, to targetCoords: IndexPath, on board: Board) -> Bool {
+        let targetPiece = board.pieceAt(indexPath: targetCoords)
+        if board.isEmpty(at: targetCoords) {
+            return true
+        } else if let targetPiece = targetPiece, targetPiece.color != piece.color {
+            return true
+        } else {
+            return false
+        }
+    }
     
-    func canMove(with piece: Piece, to targetCoords: IndexPath?, on board: Board) -> Bool {
-            guard let targetCoords = targetCoords else { return false }
-            let enemyPiece = board.pieces[targetCoords.item]
-            if board.spaces().contains(targetCoords.item) {
-                return true
-            } else if let enemyPiece = enemyPiece, enemyPiece.color != piece.color {
-                return true
-            } else {
-                return false
+    func possibleMoves(piece: Piece, from currentCoords: IndexPath, on board: Board) -> [IndexPath] {
+        var moves: [IndexPath] = []
+        switch piece.type {
+        case .pawn:
+            moves = pawnMoves(piece: piece, from: currentCoords, on: board)
+        case .knight:
+            moves = knightMoves(from: currentCoords, on: board)
+        case .bishop:
+            moves = slidingPieceMoves(directions: bishopDirections, from: currentCoords, on: board, piece: piece)
+        case .rook:
+            moves = slidingPieceMoves(directions: rookDirections, from: currentCoords, on: board, piece: piece)
+        case .queen:
+            moves = slidingPieceMoves(directions: queenDirections, from: currentCoords, on: board, piece: piece)
+        case .king:
+            moves = kingMoves(from: currentCoords, on: board, piece: piece)
+        }
+        return moves.filter { canMove(piece: piece, to: $0, on: board) }
+    }
+    
+    private let bishopDirections = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+    private let rookDirections = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+    private let queenDirections = [(-1, -1), (-1, 1), (1, -1), (1, 1), (0, -1), (0, 1), (-1, 0), (1, 0)]
+    
+    private func pawnMoves(piece: Piece, from currentCoords: IndexPath, on board: Board) -> [IndexPath] {
+        var moves: [IndexPath] = []
+        let direction = piece.color == .white ? -1 : 1
+        let startRow = piece.color == .white ? 6 : 1
+        let oneStepForward = IndexPath(item: currentCoords.item + direction * 8, section: currentCoords.section)
+        
+        if board.isEmpty(at: oneStepForward) {
+            moves.append(oneStepForward)
+            if currentCoords.item / 8 == startRow {
+                let twoStepsForward = IndexPath(item: currentCoords.item + 2 * direction * 8, section: currentCoords.section)
+                if board.isEmpty(at: twoStepsForward) {
+                    moves.append(twoStepsForward)
+                }
             }
         }
         
-        func possibleMoves(with piece: Piece, from currentCoords: IndexPath, on board: Board) -> Set<IndexPath?> {
-            var possibleMoves = Set<IndexPath?>()
-            
-            let directionOffsets = getDirectionOffsets(for: piece, from: currentCoords)
-            
-            for direction in directionOffsets {
-                var nextCoords = apply(direction: direction, to: currentCoords)
-                while isValid(nextCoords) && canMove(with: piece, to: nextCoords, on: board) {
-                    possibleMoves.insert(nextCoords)
-                    
-                    if piece.type == .pawn || piece.type == .king || piece.type == .knight {
-                        break
-                    }
-                    
-                    nextCoords = apply(direction: direction, to: nextCoords!)
-                }
+        // Capture moves
+        let attackMoves = [(-1, direction), (1, direction)]
+        for (dx, dy) in attackMoves {
+            if let diagTarget = offset(indexPath: currentCoords, dx: dx, dy: dy), board.pieceAt(indexPath: diagTarget)?.color != piece.color {
+                moves.append(diagTarget)
             }
-            
-            return possibleMoves.filter { $0 != nil }
         }
-
+        
+        return moves
+    }
     
-    private func getDirectionOffsets(for piece: Piece, from currentCoords: IndexPath) -> [(row: Int, col: Int)] {
-        switch piece.type {
-        case .pawn:
-            let initialRow = piece.color == .black ? 1 : 6
-            let moveForward = piece.color == .black ? 1 : -1
-            var moves = [(moveForward, 0)]
-            if currentCoords.item / 8 == initialRow && piece.moveCount == 0 {
-                moves.append((2 * moveForward, 0))
+    private func knightMoves(from currentCoords: IndexPath, on board: Board) -> [IndexPath] {
+        let moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)].compactMap { dx, dy in
+            offset(indexPath: currentCoords, dx: dx, dy: dy)
+        }
+        return moves
+    }
+    
+    private func slidingPieceMoves(directions: [(Int, Int)], from currentCoords: IndexPath, on board: Board, piece: Piece) -> [IndexPath] {
+        var moves: [IndexPath] = []
+        for (dx, dy) in directions {
+            var nextCoords = offset(indexPath: currentCoords, dx: dx, dy: dy)
+            while let next = nextCoords, board.isEmpty(at: next) {
+                moves.append(next)
+                nextCoords = offset(indexPath: next, dx: dx, dy: dy)
             }
-            
-        //    moves += [(moveForward, -1), (moveForward, 1)]
-            return moves.filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
-        case .rook:
-            return [(1, 0), (-1, 0), (0, 1), (0, -1)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
-        case .knight:
-            return [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
-        case .bishop:
-            return [(1, 1), (1, -1), (-1, 1), (-1, -1)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
-        case .queen, .king:
-            return [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)].filter { isValidOffset(currentCoords: currentCoords, offset: $0) }
+            if let next = nextCoords, board.pieceAt(indexPath: next)?.color != piece.color {
+                moves.append(next)
+            }
+        }
+        return moves
+    }
+    
+    private func kingMoves(from currentCoords: IndexPath, on board: Board, piece: Piece) -> [IndexPath] {
+        queenDirections.compactMap { dx, dy in
+            offset(indexPath: currentCoords, dx: dx, dy: dy)
         }
     }
-}
-
-private func apply(direction: (row: Int, col: Int), to indexPath: IndexPath) -> IndexPath? {
-    let row = indexPath.item / 8 + direction.row
-    let col = indexPath.item % 8 + direction.col
-    if row >= 0 && row < 8 && col >= 0 && col < 8 {
-        return IndexPath(item: row * 8 + col, section: indexPath.section)
-    } else {
+    
+    private func offset(indexPath: IndexPath, dx: Int, dy: Int) -> IndexPath? {
+        let row = indexPath.item / 8 + dx
+        let col = indexPath.item % 8 + dy
+        if row >= 0, row < 8, col >= 0, col < 8 {
+            return IndexPath(item: row * 8 + col, section: indexPath.section)
+        }
         return nil
     }
-}
-
-private func isValid(_ indexPath: IndexPath?) -> Bool {
-    guard let indexPath = indexPath else { return false }
-    let row = indexPath.item / 8
-    let col = indexPath.item % 8
-    return row >= 0 && row < 8 && col >= 0 && col < 8
-}
-
-private func isValidOffset(currentCoords: IndexPath, offset: (row: Int, col: Int)) -> Bool {
-    let currentRow = currentCoords.item / 8
-    let currentCol = currentCoords.item % 8
-    let newRow = currentRow + offset.row
-    let newCol = currentCol + offset.col
-    return newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8
 }
 

@@ -200,12 +200,12 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     private func setMark(cell: ChessBoardCell, indexPath: IndexPath){
         if let piece = self.board.pieces[indexPath.row] {
             
-            let possibleMoves = Move().possibleMoves(with: piece, from: indexPath, on: board)
+            let possibleMoves = Move().possibleMoves(piece: piece, from: indexPath, on: board)
             for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
                 cell.showMark(false)
             }
             for moveIndexPath in possibleMoves {
-                if let moveCell = collectionView.cellForItem(at: moveIndexPath!) as? ChessBoardCell {
+                if let moveCell = collectionView.cellForItem(at: moveIndexPath) as? ChessBoardCell {
                     moveCell.showMark(true)
                 }
             }

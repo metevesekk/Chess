@@ -11,40 +11,39 @@ class Move {
     
     var board = Board()
     
-    func canMove(with piece: Piece, to targetCoords: IndexPath?) -> Bool{
-        var bool = Bool()
-        guard let targetCoords = targetCoords else { return false }
-        let enemyPiece = board.pieces[targetCoords.item]
-        if board.spaces().contains(targetCoords.item){
-            bool = true
-        } else if board.spaces().contains(targetCoords.item) && enemyPiece?.color != piece.color{
-            bool = true
-        } else {
-            bool = false
-        }
-        return bool
-    }
-    
-    func possibleMoves(with piece: Piece, from currentCoords: IndexPath) -> Set<IndexPath?> {
-        var possibleMoves = Set<IndexPath?>()
-        
-        let directionOffsets = getDirectionOffsets(for: piece, from: currentCoords)
-        
-        for direction in directionOffsets {
-            var nextCoords = apply(direction: direction, to: currentCoords)
-            while isValid(nextCoords) && canMove(with: piece, to: nextCoords){
-                possibleMoves.insert(nextCoords)
-                
-                if piece.type == .pawn || piece.type == .king || piece.type == .knight{
-                    break
-                }
-                
-                nextCoords = apply(direction: direction, to: nextCoords!)
+    func canMove(with piece: Piece, to targetCoords: IndexPath?, on board: Board) -> Bool {
+            guard let targetCoords = targetCoords else { return false }
+            let enemyPiece = board.pieces[targetCoords.item]
+            if board.spaces().contains(targetCoords.item) {
+                return true
+            } else if let enemyPiece = enemyPiece, enemyPiece.color != piece.color {
+                return true
+            } else {
+                return false
             }
         }
         
-        return possibleMoves.filter { $0 != nil }
-    }
+        func possibleMoves(with piece: Piece, from currentCoords: IndexPath, on board: Board) -> Set<IndexPath?> {
+            var possibleMoves = Set<IndexPath?>()
+            
+            let directionOffsets = getDirectionOffsets(for: piece, from: currentCoords)
+            
+            for direction in directionOffsets {
+                var nextCoords = apply(direction: direction, to: currentCoords)
+                while isValid(nextCoords) && canMove(with: piece, to: nextCoords, on: board) {
+                    possibleMoves.insert(nextCoords)
+                    
+                    if piece.type == .pawn || piece.type == .king || piece.type == .knight {
+                        break
+                    }
+                    
+                    nextCoords = apply(direction: direction, to: nextCoords!)
+                }
+            }
+            
+            return possibleMoves.filter { $0 != nil }
+        }
+
     
     private func getDirectionOffsets(for piece: Piece, from currentCoords: IndexPath) -> [(row: Int, col: Int)] {
         switch piece.type {

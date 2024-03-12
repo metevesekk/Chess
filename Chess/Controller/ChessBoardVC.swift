@@ -130,7 +130,6 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
            
             
             self?.board.movePiece(from: sourceIndexPath, to: targetIndexPath)
-            self?.board.pieces[sourceIndexPath.row] = nil
 
             targetCell.configurePiece(with: self?.board.pieces[targetIndexPath.row])
             self?.clearAllMarks()
@@ -195,7 +194,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     private func setMark(cell: ChessBoardCell, indexPath: IndexPath){
         if let piece = self.board.pieces[indexPath.row] {
             
-            let possibleMoves = Move().possibleMoves(with: piece, from: indexPath)
+            let possibleMoves = Move().possibleMoves(with: piece, from: indexPath, on: board)
             for cell in collectionView.visibleCells.compactMap({ $0 as? ChessBoardCell }) {
                 cell.showMark(false)
             }
@@ -243,7 +242,6 @@ extension ChessBoardVC{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         UIView.animate(withDuration: 0.15){
-            guard let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell else { return }
             self.selectCell(at: indexPath)
         }
     }

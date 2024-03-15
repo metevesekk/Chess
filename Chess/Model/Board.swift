@@ -20,22 +20,12 @@ class Board {
     func pieceAt(indexPath: IndexPath) -> Piece? {
             guard indexPath.item >= 0, indexPath.item < pieces.count else { return nil }
             return pieces[indexPath.item]
-        }
-        
-        func isEmpty(at indexPath: IndexPath) -> Bool {
-            pieceAt(indexPath: indexPath) == nil
-        }
-    
-    func spaces() -> Set<Int>{
-        var emptyIndexes = Set<Int>()
-        for index in 0...63{
-            if pieces[index] == nil{
-                emptyIndexes.insert(index)
-            }
-        }
-        return emptyIndexes
     }
-    
+        
+    func isEmpty(at indexPath: IndexPath) -> Bool {
+        pieceAt(indexPath: indexPath) == nil
+    }
+
     func movePiece(from sourceIndex: IndexPath, to targetIndex: IndexPath) {
         // Kaynak ve hedef indekslerin uygun aralıkta olduğundan emin olun
         guard sourceIndex.row >= 0, sourceIndex.row < pieces.count,
@@ -50,11 +40,9 @@ class Board {
             return
         }
 
-        // Taşı hedef indekse hareket ettir
         pieces[targetIndex.row] = pieceToMove
         pieces[sourceIndex.row] = nil
 
-        // Taşın konumunu ve hareket sayısını güncelle
         pieces[targetIndex.row]?.index = targetIndex
         pieces[targetIndex.row]?.moveCount += 1
     }

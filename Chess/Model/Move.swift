@@ -9,6 +9,10 @@ import Foundation
 
 class Move {
     
+    private let bishopDirections = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+    private let rookDirections = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+    private let queenDirections = [(-1, -1), (-1, 1), (1, -1), (1, 1), (0, -1), (0, 1), (-1, 0), (1, 0)]
+    
     func canMove(piece: Piece, to targetCoords: IndexPath, on board: Board) -> Bool {
         let targetPiece = board.pieceAt(indexPath: targetCoords)
         if board.isEmpty(at: targetCoords) {
@@ -39,10 +43,6 @@ class Move {
         return moves.filter { canMove(piece: piece, to: $0, on: board) }
     }
     
-    private let bishopDirections = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
-    private let rookDirections = [(0, -1), (0, 1), (-1, 0), (1, 0)]
-    private let queenDirections = [(-1, -1), (-1, 1), (1, -1), (1, 1), (0, -1), (0, 1), (-1, 0), (1, 0)]
-    
     private func pawnMoves(piece: Piece, from currentCoords: IndexPath, on board: Board) -> [IndexPath] {
         var moves: [IndexPath] = []
         let direction = piece.color == .white ? -1 : 1
@@ -57,6 +57,7 @@ class Move {
                 if currentCoords.item / 8 == startRow {
                     let twoStepsForwardIndex = currentCoords.item + 2 * direction * 8
                     if twoStepsForwardIndex >= 0 && twoStepsForwardIndex < 64 {
+                        
                         let twoStepsForward = IndexPath(item: twoStepsForwardIndex, section: currentCoords.section)
                         if board.isEmpty(at: twoStepsForward) {
                             moves.append(twoStepsForward)
@@ -66,7 +67,6 @@ class Move {
             }
         }
 
-        // Capture moves
         let attackMoves = [(-1, direction), (1, direction)]
         for (dx, dy) in attackMoves {
             let diagIndex = currentCoords.item + dx + dy * 8
@@ -94,9 +94,7 @@ class Move {
             var nextCoords = offset(indexPath: currentCoords, dx: dx, dy: dy)
             while let next = nextCoords, board.isEmpty(at: next) {
                 moves.append(next)
-                nextCoords = offset(indexPath:
-
- next, dx: dx, dy: dy)
+                nextCoords = offset(indexPath: next, dx: dx, dy: dy)
             }
             if let next = nextCoords, board.pieceAt(indexPath: next)?.color != piece.color {
                 moves.append(next)

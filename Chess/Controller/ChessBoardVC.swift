@@ -16,6 +16,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var draggingView: UIView?
     var initialCenter: CGPoint?
     var collectionView: UICollectionView!
+    var isBlacksTurn = false
     
     // MARK: VIEWDIDLOAD
     
@@ -67,18 +68,20 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             guard let indexPath = collectionView.indexPathForItem(at: location),
                   let cell = collectionView.cellForItem(at: indexPath) as? ChessBoardCell,
                   self.board.pieces[indexPath.row] != nil,
+                  let piece = self.board.pieces[indexPath.row],
                   let snapshot = cell.pieceImage.snapshotView(afterScreenUpdates: true) else { return }
             
-            selectCell(at: indexPath)
-            self.draggingIndexPath = indexPath
-            let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
-            snapshot.frame = frame
-            collectionView.addSubview(snapshot)
-            snapshot.center = location
-            draggingView = snapshot
-            initialCenter = snapshot.center
-            cell.pieceImage.isHidden = true
-            
+            if piece.color == .white && isBlacksTurn == false || piece.color == .black && isBlacksTurn == true{
+                selectCell(at: indexPath)
+                self.draggingIndexPath = indexPath
+                let frame = collectionView.convert(cell.pieceImage.frame, from: cell)
+                snapshot.frame = frame
+                collectionView.addSubview(snapshot)
+                snapshot.center = location
+                draggingView = snapshot
+                initialCenter = snapshot.center
+                cell.pieceImage.isHidden = true
+            }
             
         case .changed:
             guard let initialCenter = initialCenter,
@@ -111,6 +114,7 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                     resetDraggingItemToInitialPosition(draggingView: draggingView, sourceCell: sourceCell)
                 } else {
                     finishDraggingItem(draggingView: draggingView, sourceIndexPath: draggingIndexPath, targetIndexPath: targetIndexPath, sourceCell: sourceCell, targetCell: targetCell)
+                    isBlacksTurn = !isBlacksTurn
                 }
 
            
@@ -248,7 +252,10 @@ extension ChessBoardVC{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         UIView.animate(withDuration: 0.15){
-            self.selectCell(at: indexPath)
+            guard let piece = self.board.pieces[indexPath.row] else { return }
+            if piece.color == .white && self.isBlacksTurn == false || piece.color == .black && self.isBlacksTurn == true{
+                self.selectCell(at: indexPath)
+            }
         }
     }
 

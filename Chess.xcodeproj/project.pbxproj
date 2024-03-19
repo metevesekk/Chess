@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		353E0CF82B76233300522E12 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353E0CF72B76233300522E12 /* CustomLabel.swift */; };
+		354158DA2BAA32C0009BDDA9 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354158D92BAA32C0009BDDA9 /* WebSocketManager.swift */; };
 		355AFE8A2B73EAB400E8F48A /* GameScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AFE892B73EAB400E8F48A /* GameScreenVC.swift */; };
 		355AFE8C2B73EAC800E8F48A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AFE8B2B73EAC800E8F48A /* SettingsVC.swift */; };
 		355AFE8E2B73EAFB00E8F48A /* CreateGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AFE8D2B73EAFB00E8F48A /* CreateGameVC.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		17D3646D2837233C5AD61F74 /* Pods_Chess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		353E0CF72B76233300522E12 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		354158D92BAA32C0009BDDA9 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		355AFE892B73EAB400E8F48A /* GameScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenVC.swift; sourceTree = "<group>"; };
 		355AFE8B2B73EAC800E8F48A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		355AFE8D2B73EAFB00E8F48A /* CreateGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameVC.swift; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		354158D82BAA1533009BDDA9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				354158D92BAA32C0009BDDA9 /* WebSocketManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		355AFE862B73E3A100E8F48A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,9 +193,10 @@
 				355AFE882B73E3C500E8F48A /* Controller */,
 				355AFE872B73E3AF00E8F48A /* View */,
 				355AFE862B73E3A100E8F48A /* Model */,
-				35D1C96E2B73DF950029E2A5 /* AppDelegate.swift */,
-				35D1C9702B73DF950029E2A5 /* SceneDelegate.swift */,
+				354158D82BAA1533009BDDA9 /* Utils */,
 				35D1C9742B73DF950029E2A5 /* Main.storyboard */,
+				35D1C9702B73DF950029E2A5 /* SceneDelegate.swift */,
+				35D1C96E2B73DF950029E2A5 /* AppDelegate.swift */,
 				35D1C9772B73DF960029E2A5 /* Assets.xcassets */,
 				35D1C9792B73DF960029E2A5 /* LaunchScreen.storyboard */,
 				35D1C97C2B73DF960029E2A5 /* Info.plist */,
@@ -452,6 +463,7 @@
 				35D1C9712B73DF950029E2A5 /* SceneDelegate.swift in Sources */,
 				355AFE8C2B73EAC800E8F48A /* SettingsVC.swift in Sources */,
 				35DF6C0B2B75376600AE1312 /* Player.swift in Sources */,
+				354158DA2BAA32C0009BDDA9 /* WebSocketManager.swift in Sources */,
 				35DF6C012B752B7500AE1312 /* ColorFont+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

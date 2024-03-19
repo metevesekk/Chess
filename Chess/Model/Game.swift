@@ -9,6 +9,19 @@ import Foundation
 import RealmSwift
 
 class Game{
-
+    var game: [Board]?
+    var isGameOver = false
+    var moveCount = 0
+    
+    func getGame(board: Board) -> [Board]?{
+        
+        while isGameOver{
+            if game != nil{
+                game?.append(board)
+                moveCount += 1
+            }
+        }
+        return game
+    }
     
 }

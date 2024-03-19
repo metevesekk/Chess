@@ -10,5 +10,11 @@ import RealmSwift
 
 struct Player{
     var nickname : String
-    var history : History
+    var isCurrentPlayer: Bool
+    var colorPlayer: PlayerColor
+    
+}
+
+enum PlayerColor {
+    case white, black
 }

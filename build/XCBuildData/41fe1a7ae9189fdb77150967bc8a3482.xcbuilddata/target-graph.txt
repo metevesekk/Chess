@@ -1,0 +1,15 @@
+Target dependency graph (6 targets)
+Target 'ChessUITests' in project 'Chess'
+➜ Explicit dependency on target 'Chess' in project 'Chess'
+Target 'ChessTests' in project 'Chess'
+➜ Explicit dependency on target 'Chess' in project 'Chess'
+Target 'Chess' in project 'Chess'
+➜ Implicit dependency on target 'Pods-Chess' in project 'Pods' via file 'Pods_Chess.framework' in build phase 'Link Binary'
+➜ Implicit dependency on target 'Realm' in project 'Pods' via options '-framework Realm' in build setting 'OTHER_LDFLAGS'
+➜ Implicit dependency on target 'RealmSwift' in project 'Pods' via options '-framework RealmSwift' in build setting 'OTHER_LDFLAGS'
+Target 'Pods-Chess' in project 'Pods'
+➜ Explicit dependency on target 'Realm' in project 'Pods'
+➜ Explicit dependency on target 'RealmSwift' in project 'Pods'
+Target 'RealmSwift' in project 'Pods'
+➜ Explicit dependency on target 'Realm' in project 'Pods'
+Target 'Realm' in project 'Pods' (no dependencies)

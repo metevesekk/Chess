@@ -1,0 +1,298 @@
+{
+  "" : {
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Chess-master.dia",
+    "emit-module-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Chess-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Chess-master-emit-module.dia",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Chess-master.swiftdeps"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/DerivedSources/CoreDataGenerated/ChessModel/ChessModel+CoreDataModel.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessModel+CoreDataModel~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/DerivedSources/CoreDataGenerated/ChessModel/PieceEntity+CoreDataClass.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/DerivedSources/CoreDataGenerated/ChessModel/PieceEntity+CoreDataProperties.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/AppDelegate.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/AppDelegate~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Controller/ChessBoardVC.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardVC~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Controller/CreateGameVC.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CreateGameVC~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Controller/GameScreenVC.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/GameScreenVC~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Controller/LoginVC.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LoginVC~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Controller/MenuVC.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/MenuVC~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Controller/SettingsVC.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SettingsVC~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/Board.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Board~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/CoreData/PieceEntity+CoreDataClass.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/CoreData/PieceEntity+CoreDataProperties.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/PieceEntity+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/Game.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Game~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/History.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/History~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/Move.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Move~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/Piece.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Piece~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Model/Player.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/Player~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/SceneDelegate.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/SceneDelegate~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/Utils/WebSocketManager.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/WebSocketManager~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Components/ChessBoardCell.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ChessBoardCell~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Components/CustomButton.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomButton~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Components/CustomLabel.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/CustomLabel~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Components/ProfileCard.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ProfileCard~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Extensions/ColorFont+Extension.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ColorFont+Extension~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Extensions/UIView+Extensions.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/UIView+Extensions~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Manager/LayoutManager.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/LayoutManager~partial.swiftmodule"
+  },
+  "/Users/metevesek/Desktop/Projects/Chess/Chess/View/Manager/ThemeManager.swift" : {
+    "const-values" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager.swiftconstvalues",
+    "dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager.d",
+    "diagnostics" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager.dia",
+    "index-unit-output-path" : "/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager.o",
+    "llvm-bc" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager.bc",
+    "object" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager.o",
+    "swift-dependencies" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager.swiftdeps",
+    "swiftmodule" : "/Users/metevesek/Desktop/Projects/Chess/build/Chess.build/Debug-iphonesimulator/Chess.build/Objects-normal/arm64/ThemeManager~partial.swiftmodule"
+  }
+}

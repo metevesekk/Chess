@@ -81,3 +81,30 @@ class Board {
 
 }
 
+extension Board {
+    func serializeToData() -> Data? {
+        let piecesDictArray = pieces.compactMap { $0?.toDictionary() }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: piecesDictArray, options: [])
+            return jsonData
+        } catch {
+            print("Error serializing board: \(error)")
+            return nil
+        }
+    }
+    
+    static func deserializeFrom(data: Data) -> Board? {
+        do {
+            guard let piecesArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else { return nil }
+            let pieces = piecesArray.map { Piece.fromDictionary($0) }
+            let board = Board()
+            board.pieces = pieces
+            return board
+        } catch {
+            print("Error deserializing board: \(error)")
+            return nil
+        }
+    }
+}
+
+

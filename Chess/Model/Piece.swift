@@ -33,21 +33,30 @@ enum PieceColor: String {
 }
 
 extension Piece {
-    func toCoreData(context: NSManagedObjectContext) -> CDPiece {
-        let cdPiece = CDPiece(context: context)
-        cdPiece.color = self.color.rawValue
-        cdPiece.type = self.type.rawValue
-        cdPiece.isAlive = self.isAlive
-        cdPiece.indexPath = self.index.archive()
-        cdPiece.moveCount = Int16(self.moveCount)
-        return cdPiece
+    func toDictionary() -> [String: Any] {
+        return [
+            "color": color.rawValue,
+            "type": type.rawValue,
+            "isAlive": isAlive,
+            "indexSection": index.section,
+            "indexItem": index.item,
+            "moveCount": moveCount
+        ]
     }
     
-    static func fromCoreData(cdPiece: CDPiece) -> Piece? {
-        guard let color = PieceColor(rawValue: cdPiece.color),
-              let type = PieceType(rawValue: cdPiece.type),
-              let indexPath = IndexPath.unarchive(data: cdPiece.indexPath) else { return nil }
+    static func fromDictionary(_ dictionary: [String: Any]) -> Piece? {
+        guard let colorRawValue = dictionary["color"] as? String,
+              let typeRawValue = dictionary["type"] as? String,
+              let isAlive = dictionary["isAlive"] as? Bool,
+              let indexSection = dictionary["indexSection"] as? Int,
+              let indexItem = dictionary["indexItem"] as? Int,
+              let moveCount = dictionary["moveCount"] as? Int,
+              let color = PieceColor(rawValue: colorRawValue),
+              let type = PieceType(rawValue: typeRawValue) else {
+            return nil
+        }
         
-        return Piece(type: type, color: color, isAlive: cdPiece.isAlive, index: indexPath, moveCount: Int(cdPiece.moveCount))
+        let index = IndexPath(item: indexItem, section: indexSection)
+        return Piece(type: type, color: color, isAlive: isAlive, index: index, moveCount: moveCount)
     }
 }

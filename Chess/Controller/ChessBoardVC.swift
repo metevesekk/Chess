@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -24,6 +25,12 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         super.viewDidLoad()
         setupFunctions()
         self.view.backgroundColor = .black
+        
+     /*   if let applicationDocumentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+            let url = applicationDocumentsDirectory.appendingPathComponent("YourSQLiteFileName.sqlite")
+            print("SQLite DB File Path: \(url.path)")
+        } */
+
     }
     
     // MARK: SETUP FUNCTIONS
@@ -127,6 +134,74 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     // MARK: EXTRA FUNCTIONS
     
+    func fetchAndPrintBoardState() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<CDBoard> = CDBoard.fetchRequest()
+
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            if let cdBoard = results.first {
+                let piecesData = cdBoard.pieces
+                if let board = Board.deserializeFrom(data: piecesData) {
+                    // Now you have your board object and you can print its state
+                    // Loop through the board's pieces and print them
+                    for (index, piece) in board.pieces.enumerated() {
+                        if let piece = piece {
+                            let pieceDescription = "Index: \(index), Piece: \(piece.type.rawValue), Color: \(piece.color.rawValue), isAlive: \(piece.isAlive), MoveCount: \(piece.moveCount)"
+                            print(pieceDescription)
+                        }
+                    }
+                } else {
+                    print("Failed to deserialize the board")
+                }
+            } else {
+                print("No CDBoard entity found or no pieces data available")
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+
+    
+    func saveBoardState() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Check if there is an existing board state to update or create a new one
+        let fetchRequest: NSFetchRequest<CDBoard> = CDBoard.fetchRequest()
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            let cdBoard: CDBoard
+            if results.isEmpty {
+                // Create a new CDBoard entity if there isn't one
+                cdBoard = CDBoard(context: managedContext)
+            } else {
+                // Use the existing CDBoard entity
+                cdBoard = results.first!
+            }
+            
+            // Serialize the board state to Data
+            if let boardData = board.serializeToData() {
+                cdBoard.pieces = boardData
+            } else {
+                print("Failed to serialize the board")
+                return
+            }
+            
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+
+    
     private func finishDraggingItem(draggingView: UIView, sourceIndexPath: IndexPath, targetIndexPath: IndexPath, sourceCell: ChessBoardCell, targetCell: ChessBoardCell) {
         UIView.animate(withDuration: 0.2, animations: {
             draggingView.center = targetCell.center
@@ -144,6 +219,8 @@ class ChessBoardVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             self?.clearAllMarks()
             self?.resetColor(cell: sourceCell, indexPath: sourceIndexPath)
             self?.resetDraggingState()
+            self?.saveBoardState()
+            self?.fetchAndPrintBoardState()
         }
     }
 
